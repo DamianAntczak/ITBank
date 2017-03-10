@@ -25,4 +25,8 @@ public class Client {
     public void removeAccount(BankAccount account) {
         ownedAccounts.remove(account);
     }
+
+    private void requestProduct(String clientId) { //TODO: arg as product type
+
+    }
 }
