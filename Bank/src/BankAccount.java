@@ -4,10 +4,10 @@ import java.util.Date;
 /**
  * Created by student on 10.03.2017.
  */
-public class BankAccount extends Product {
+public class BankAccount extends Product implements Debit{
 
     public BankAccount(String ownerId){
-        super(ownerId);
+        super(ownerId,"Konto osobiste");
         this.balance = 0;
         this.createdAt = new Date();
     }
@@ -17,7 +17,7 @@ public class BankAccount extends Product {
     }
 
     public boolean getCash(double amount){
-        if(this.balance >= amount){
+        if(this.balance + this.debit >= amount){
             this.balance -= amount;
             return true;
         }
@@ -29,5 +29,10 @@ public class BankAccount extends Product {
     @Override
     double close(int numberOfMonths) {
         return 0;
+    }
+
+    @Override
+    public void setDebit(double amount) {
+        this.debit = amount;
     }
 }

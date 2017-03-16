@@ -37,7 +37,13 @@ public class Main {
     }
 
     public static void testLokaty(){
-        //Deposit deposit = new Deposit(new Interest(InterestFrequency.yearly,4),5000);
-        //System.out.println(deposit.close(12));
+        Bank bank = new Bank();
+        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
+        client1.addAccount(bank.addProductForClient(new BankAccount(client1.getId())));
+        client1.printAccounts();
+        Deposit deposit = new Deposit(client1.getId(), new Interest(InterestFrequency.yearly,4),5000);
+        System.out.println(deposit);
+        System.out.println(deposit.close(12));
+
     }
 }

@@ -9,7 +9,7 @@ public class Credit extends Product {
     private Interest interest;
 
     public Credit(String ownerId, Interest interest, double amount){
-        super(ownerId);
+        super(ownerId,"Kredyt");
         this.interest = interest;
         addCash(amount);
     }

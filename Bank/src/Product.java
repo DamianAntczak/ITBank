@@ -13,16 +13,20 @@ public abstract class Product {
         CREDIT
     }
 
+    protected double debit;
     protected String ownerId;
     protected double balance;
     protected String id;
     protected Date createdAt;
     protected String OwnerID;
+    protected String name;
 
-    public Product(String OwnerID){
+    public Product(String ownerId, String name){
         createdAt = new Date();
         this.ownerId = ownerId;
         id = UUID.randomUUID().toString();
+        this.debit = 0;
+        this.name = name;
     }
 
 
@@ -40,6 +44,10 @@ public abstract class Product {
 
     public boolean canClose(){
         return balance > 0;
+    }
+
+    public String toString(){
+        return "Product - " + this.name + " numer - "+this.id+" dla użytkownika - "+this.ownerId+" : balans - "+this.balance + ", debet - "+this.debit;
     }
 
     abstract void addCash(double amount);

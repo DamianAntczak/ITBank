@@ -5,7 +5,7 @@ public class Deposit extends Product {
     private Interest interest;
 
     public Deposit(String ownerId, Interest interest, double amount){
-        super(ownerId);
+        super(ownerId, "Lokata");
         this.interest = interest;
         addCash(amount);
     }

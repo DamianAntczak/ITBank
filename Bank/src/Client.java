@@ -42,4 +42,5 @@ public class Client {
     public void printAccounts() {
         System.out.println(ownedProducts);
     }
+
 }
