@@ -16,11 +16,18 @@ public class Main {
         client1.addAccount(bank.addProductForClient(client1.id, Product.ProductType.ACCOUNT));
         client1.printAccounts();
 
-        testOdsetek();
+        //testOdsetek();
+        testLokaty();
     }
 
     public static void testOdsetek(){
         Interest interest = new Interest(InterestFrequency.monthly, 5);
         System.out.println(interest.InterestCalculation(6));
+        System.out.println();
+    }
+
+    public static void testLokaty(){
+        Deposit deposit = new Deposit(new Interest(InterestFrequency.yearly,4),5000);
+        System.out.println(deposit.close(12));
     }
 }

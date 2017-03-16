@@ -4,18 +4,30 @@
 public class Deposit extends Product {
     private Interest interest;
 
-    public Deposit(double interest, double amount){
+    public Deposit(Interest interest, double amount){
+        super();
+        this.interest = interest;
         addCash(amount);
     }
 
-    @Override
-    void addCash(double value) {
-
-
+    private double calculate(int numberOfMonths){
+        return  this.balance * this.interest.InterestCalculation(numberOfMonths);
     }
 
     @Override
-    boolean getCash(double value) {
+    void addCash(double amount) {
+        this.balance = amount;
+    }
+
+    @Override
+    boolean getCash(double amount) {
         return false;
     }
+
+    @Override
+    double close(int numberOfMonths) {
+        return this.calculate(numberOfMonths);
+    }
+
+
 }

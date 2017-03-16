@@ -7,9 +7,8 @@ import java.util.Date;
 public class BankAccount extends Product {
 
     public BankAccount(String ownerId){
-        UID uid = new UID();
+        super();
         this.balance = 0;
-        this.number = uid.toString();
         this.ownerId = ownerId;
         this.createdAt = new Date();
     }
@@ -26,5 +25,10 @@ public class BankAccount extends Product {
         else{
             return false;
         }
+    }
+
+    @Override
+    double close(int numberOfMonths) {
+        return 0;
     }
 }

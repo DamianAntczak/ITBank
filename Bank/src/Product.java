@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by student on 10.03.2017.
@@ -12,12 +13,17 @@ public abstract class Product {
 
     protected String ownerId;
     protected double balance;
-    protected String number;
+    protected String id;
     protected Date createdAt;
 
+    public Product(){
+        createdAt = new Date();
+        id = UUID.randomUUID().toString();
+    }
 
-    public String getNumber(){
-        return this.number;
+
+    public String getId(){
+        return this.id;
     }
 
     public double getBalance(){
@@ -28,6 +34,11 @@ public abstract class Product {
         return this.createdAt;
     }
 
-    abstract void addCash(double value);
-    abstract boolean getCash(double value);
+    public boolean canClose(){
+        return balance > 0;
+    }
+
+    abstract void addCash(double amount);
+    abstract boolean getCash(double amount);
+    abstract double close(int numberOfMonths);
 }
