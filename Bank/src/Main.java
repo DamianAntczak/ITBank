@@ -29,5 +29,6 @@ public class Main {
     public static void testLokaty(){
         Deposit deposit = new Deposit(new Interest(InterestFrequency.yearly,4),5000);
         System.out.println(deposit.close(12));
+
     }
 }
