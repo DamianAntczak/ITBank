@@ -9,7 +9,7 @@ public class Client {
     private String name;
     private String surname;
     private String address;
-    private List<Product> ownedProducts = new ArrayList<Product>();
+    private List<String> ownedProducts = new ArrayList<String>();
 
     public String getId() {
         return id;
@@ -22,18 +22,10 @@ public class Client {
         this.address = address;
     }
 
-    public void addAccount(Product account) {
+    public void addProduct(String account) {
         ownedProducts.add(account);
     }
 
-    public void removeAccount(String productId) {
-        for (Product product : ownedProducts) {
-            Product prodToDel = null;
-            if (product.id == productId)
-                prodToDel = product;
-            ownedProducts.remove(prodToDel);
-        }
-    }
 
     /*public void transferOperation(Integer amount, String myProduct, String toProduct) {
 

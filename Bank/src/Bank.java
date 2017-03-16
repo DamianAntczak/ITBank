@@ -18,13 +18,27 @@ public class Bank {
         return new Client(UUID.randomUUID().toString(), name, surname, address);
     }
 
-    public Product addProductForClient(Product product) {
+    public String addProductForClient(Product product) {
         products.add(product);
 
-        return product;
+        return product.getId();
     }
 
     public void performOperation() {
 
+    }
+
+    public boolean removeAccount(String productId) {
+        for (Product product : products) {
+            Product prodToDel = null;
+            if (product.id == productId){
+                prodToDel = product;
+                products.remove(prodToDel);
+                return true;
+            }
+
+        }
+
+        return false;
     }
 }

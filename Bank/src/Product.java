@@ -18,7 +18,7 @@ public abstract class Product {
     protected double balance;
     protected String id;
     protected Date createdAt;
-    protected String OwnerID;
+    protected String ownerID;
     protected String name;
 
     public Product(String ownerId, String name){

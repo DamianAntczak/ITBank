@@ -21,11 +21,11 @@ public class Main {
     public static  void testBanku() {
         Bank bank = new Bank();
         Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
-        client1.addAccount(bank.addProductForClient(new BankAccount(client1.getId())));
-        client1.addAccount(bank.addProductForClient(new Credit(client1.getId(), new Interest(InterestFrequency.halfYearly, 4), 4000)));
+        client1.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
+        client1.addProduct(bank.addProductForClient(new Credit(client1.getId(), new Interest(InterestFrequency.halfYearly, 4), 4000)));
 
         Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
-        client2.addAccount(bank.addProductForClient(new BankAccount(client1.getId())));
+        client2.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
 
         client1.printAccounts();
     }
@@ -39,7 +39,7 @@ public class Main {
     public static void testLokaty(){
         Bank bank = new Bank();
         Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
-        client1.addAccount(bank.addProductForClient(new BankAccount(client1.getId())));
+        client1.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
         client1.printAccounts();
         Deposit deposit = new Deposit(client1.getId(), new Interest(InterestFrequency.yearly,4),5000);
         System.out.println(deposit);
