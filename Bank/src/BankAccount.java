@@ -27,5 +27,4 @@ public class BankAccount extends Product {
             return false;
         }
     }
-
 }
