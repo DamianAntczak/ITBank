@@ -13,19 +13,14 @@ public class History {
 
     private History() {}
 
-    private List<BankingOperation> bankingOperations = new ArrayList<BankingOperation>();
+    private List<Record> records = new ArrayList<>();
 
-    public void addRecord(BankingOperation bankingOperation) {
-        bankingOperations.add(bankingOperation);
+    public void addRecord(Record record) {
+        this.records.add(record);
     }
 
-    public List<BankingOperation> getBankingOperationsForProduct(Product product) {
+    public List<Record> getRecordsForProduct(Product product) {
         //TODO for product
-        return  bankingOperations;
+        return records;
     }
-
-
-
-
-
 }

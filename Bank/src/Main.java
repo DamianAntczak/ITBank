@@ -30,5 +30,6 @@ public class Main {
         client1.printAccounts();
         Deposit deposit = new Deposit(client1.id, new Interest(InterestFrequency.yearly,4),5000);
         System.out.println(deposit.close(12));
+
     }
 }
