@@ -18,23 +18,10 @@ public class Bank {
         return new Client(UUID.randomUUID().toString(), name, surname, address);
     }
 
-    public Product addProductForClient(String clientId, Product.ProductType type) {
-        Product bankProduct;
+    public Product addProductForClient(Product product) {
+        products.add(product);
 
-        switch (type) {
-            case ACCOUNT:
-                bankProduct = new BankAccount(clientId);
-                break;
-            case DEPOSIT:
-                bankProduct = null;
-                break;
-            default:
-                bankProduct = null;
-                break;
-        }
-
-        return bankProduct;
-
+        return product;
     }
 
     public void performOperation() {

@@ -14,7 +14,20 @@ public class Main {
 
 
         //testOdsetek();
-        testLokaty();
+        //testLokaty();
+        testBanku();
+    }
+
+    public static  void testBanku() {
+        Bank bank = new Bank();
+        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
+        client1.addAccount(bank.addProductForClient(new BankAccount(client1.getId())));
+        client1.addAccount(bank.addProductForClient(new Credit(client1.getId(), new Interest(InterestFrequency.halfYearly, 4), 4000)));
+
+        Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
+        client2.addAccount(bank.addProductForClient(new BankAccount(client1.getId())));
+
+        client1.printAccounts();
     }
 
     public static void testOdsetek(){
@@ -24,12 +37,7 @@ public class Main {
     }
 
     public static void testLokaty(){
-        Bank bank = new Bank();
-        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
-        client1.addAccount(bank.addProductForClient(client1.id, Product.ProductType.ACCOUNT));
-        client1.printAccounts();
-        Deposit deposit = new Deposit(client1.id, new Interest(InterestFrequency.yearly,4),5000);
-        System.out.println(deposit.close(12));
-
+        //Deposit deposit = new Deposit(new Interest(InterestFrequency.yearly,4),5000);
+        //System.out.println(deposit.close(12));
     }
 }

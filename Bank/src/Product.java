@@ -9,7 +9,8 @@ public abstract class Product {
 
     public enum ProductType {
         ACCOUNT,
-        DEPOSIT
+        DEPOSIT,
+        CREDIT
     }
 
     protected String ownerId;
