@@ -5,11 +5,11 @@ import java.util.List;
  * Created by student on 10.03.2017.
  */
 public class Client {
-    private String id;
+    public String id;
     private String name;
     private String surname;
     private String address;
-    private List<BankAccount> ownedAccounts = new ArrayList<BankAccount>();
+    private List<Product> ownedAccounts = new ArrayList<Product>();
 
     public Client(String id, String name, String surname, String address) {
         this.id = id;
@@ -18,7 +18,7 @@ public class Client {
         this.address = address;
     }
 
-    public void addAccount(BankAccount account) {
+    public void addAccount(Product account) {
         ownedAccounts.add(account);
     }
 
@@ -26,7 +26,7 @@ public class Client {
         ownedAccounts.remove(account);
     }
 
-    private void requestProduct(String clientId) { //TODO: arg as product type
-
+    public void printAccounts() {
+        System.out.println(ownedAccounts);
     }
 }

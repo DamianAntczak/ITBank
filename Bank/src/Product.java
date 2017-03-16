@@ -5,6 +5,11 @@ import java.util.Date;
  */
 public abstract class Product {
 
+    public enum ProductType {
+        ACCOUNT,
+        LOAN
+    }
+
     protected String ownerId;
     protected double balance;
     protected String number;
