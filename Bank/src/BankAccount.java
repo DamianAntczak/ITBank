@@ -7,9 +7,8 @@ import java.util.Date;
 public class BankAccount extends Product {
 
     public BankAccount(String ownerId){
-        super();
+        super(ownerId);
         this.balance = 0;
-        this.ownerId = ownerId;
         this.createdAt = new Date();
     }
 

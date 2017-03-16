@@ -1,3 +1,4 @@
+import java.security.acl.Owner;
 import java.util.Date;
 import java.util.UUID;
 
@@ -15,9 +16,11 @@ public abstract class Product {
     protected double balance;
     protected String id;
     protected Date createdAt;
+    protected String OwnerID;
 
-    public Product(){
+    public Product(String OwnerID){
         createdAt = new Date();
+        this.ownerId = ownerId;
         id = UUID.randomUUID().toString();
     }
 

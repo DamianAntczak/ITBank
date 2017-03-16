@@ -11,10 +11,7 @@ public class Main {
         System.out.println(firstAccount.getBalance());
         System.out.println(firstAccount.getCreatedAt());*/
 
-        Bank bank = new Bank();
-        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
-        client1.addAccount(bank.addProductForClient(client1.id, Product.ProductType.ACCOUNT));
-        client1.printAccounts();
+
 
         //testOdsetek();
         testLokaty();
@@ -27,7 +24,11 @@ public class Main {
     }
 
     public static void testLokaty(){
-        Deposit deposit = new Deposit(new Interest(InterestFrequency.yearly,4),5000);
+        Bank bank = new Bank();
+        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
+        client1.addAccount(bank.addProductForClient(client1.id, Product.ProductType.ACCOUNT));
+        client1.printAccounts();
+        Deposit deposit = new Deposit(client1.id, new Interest(InterestFrequency.yearly,4),5000);
         System.out.println(deposit.close(12));
     }
 }
