@@ -14,13 +14,13 @@ public class BankAccount extends Product {
         this.createdAt = new Date();
     }
 
-    public void addCash(double value){
-        this.balance += value;
+    public void addCash(double amount){
+        this.balance += amount;
     }
 
-    public boolean getCash(double value){
-        if(this.balance >= value){
-            this.balance -= value;
+    public boolean getCash(double amount){
+        if(this.balance >= amount){
+            this.balance -= amount;
             return true;
         }
         else{

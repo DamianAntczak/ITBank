@@ -15,5 +15,12 @@ public class Main {
         Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
         client1.addAccount(bank.addProductForClient(client1.id, Product.ProductType.ACCOUNT));
         client1.printAccounts();
+
+        testOdsetek();
+    }
+
+    public static void testOdsetek(){
+        Interest interest = new Interest(InterestFrequency.monthly, 5);
+        System.out.println(interest.InterestCalculation(6));
     }
 }
