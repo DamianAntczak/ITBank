@@ -15,18 +15,19 @@ public class BankingOperation {
         INCOMINGCASH,
         OUTCOMINGCASH,
         REJECTEDCASH,
+
+        PRODUCTREMOVED,
+        PRODUCTADDED,
+        PRODUCTDENIEDTOREMOVE,
+
     }
 
     private String id;
     private Date date;
 
-    public BankingOperation(BankingOperationType type) {
-        new BankingOperation(new UID().toString(), new Date());
-    }
-
-    private BankingOperation(String id, Date date) {
-        this.id = id;
-        this.date = date;
+    public BankingOperation() {
+        this.id = new UID().toString();
+        this.date = new Date();
     }
 
     public boolean transferOperation(Integer amount, Product fromProduct, Product toProduct) {
@@ -47,11 +48,13 @@ public class BankingOperation {
         History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.INCOMINGCASH, amount, "", toProduct.getId()));
     }
 
-    public void outcomingCashOperation(Integer amount, Product fromProduct) {
+    public boolean outcomingCashOperation(Integer amount, Product fromProduct) {
         if (fromProduct.getCash(amount)) {
             History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.OUTCOMINGCASH, amount, fromProduct.getId(), ""));
+            return true;
         } else {
             History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.REJECTEDCASH, amount, fromProduct.getId(), ""));
+            return false;
         }
     }
 

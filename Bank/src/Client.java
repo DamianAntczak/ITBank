@@ -9,7 +9,7 @@ public class Client {
     private String name;
     private String surname;
     private String address;
-    private List<String> ownedProducts = new ArrayList<String>();
+    private List<String> ownedProductsIds = new ArrayList<String>();
 
     public String getId() {
         return id;
@@ -23,16 +23,25 @@ public class Client {
     }
 
     public void addProduct(String account) {
-        ownedProducts.add(account);
+        ownedProductsIds.add(account);
     }
 
-
-    /*public void transferOperation(Integer amount, String myProduct, String toProduct) {
-
-    }*/
 
     public void printAccounts() {
-        System.out.println(ownedProducts);
+        System.out.println(ownedProductsIds);
     }
+
+    public List<String> getProductsIds() {
+        return ownedProductsIds;
+    }
+
+    public String getProductId(Integer index) {
+        return ownedProductsIds.get(index);
+    }
+
+    public void removeProductForId(String productIdtoRemove) {
+        ownedProductsIds.remove(productIdtoRemove);
+    }
+
 
 }

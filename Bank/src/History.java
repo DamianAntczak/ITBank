@@ -19,8 +19,10 @@ public class History {
         this.records.add(record);
     }
 
-    public List<Record> getRecordsForProduct(Product product) {
-        //TODO for product
-        return records;
+    public void printRecords() {
+        for (Record record : records) {
+            record.print();
+        }
     }
+
 }
