@@ -25,7 +25,7 @@ public class Bank {
             case ACCOUNT:
                 bankProduct = new BankAccount(clientId);
                 break;
-            case LOAN:
+            case DEPOSIT:
                 bankProduct = null;
                 break;
             default:
