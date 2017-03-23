@@ -1,7 +1,9 @@
 import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.UUID;
 
@@ -26,10 +28,6 @@ public class DepositTest {
         Assert.assertEquals(deposit.getBalance(),7000,0.000001);
     }
 
-    @Test
-    public void getCash() throws Exception{
-        Assert.assertEquals(deposit.getCash(2000),false);
-    }
 
     @Test
     public void close() throws Exception{
