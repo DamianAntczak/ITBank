@@ -1,7 +1,3 @@
-import java.rmi.server.UID;
-import java.util.Date;
-import java.util.UUID;
-
 /**
  * Created by krzysztof on 16/03/2017.
  */
@@ -24,8 +20,14 @@ public class Credit extends Product {
     }
 
     @Override
-    boolean getCash(double amount) {
-        return false;
+    double getCash(double amount) throws RuntimeException {
+        if(this.balance + this.debit >= amount){
+            this.balance -= amount;
+            return amount;
+        }
+        else{
+            throw new RuntimeException("Cannot get cash from bank account.");
+        }
     }
 
     @Override
@@ -33,5 +35,9 @@ public class Credit extends Product {
         return this.calculate(numberOfMonths);
     }
 
+    @Override
+    boolean canClose() {
+        return this.balance >= 0;
+    }
 
 }

@@ -30,17 +30,16 @@ public class BankingOperation {
         this.date = new Date();
     }
 
-    public boolean transferOperation(Integer amount, Product fromProduct, Product toProduct) {
-        if (fromProduct.getCash(amount)) {
+    public void transferOperation(Integer amount, Product fromProduct, Product toProduct) throws Exception {
+        try {
+            fromProduct.getCash(amount);
             toProduct.addCash(amount);
             History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.INCOMINGTRANSFER, amount, fromProduct.getId(), toProduct.getId()));
             History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.OUTCOMINGTRANSFER, amount, toProduct.getId(), fromProduct.getId()));
-            return true;
-        } else {
+        } catch (Exception e) {
             History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.REJECTEDTRANSFER, amount, toProduct.getId(), fromProduct.getId()));
-            return false;
+            throw e;
         }
-
     }
 
     public void incomingCashOperation(Integer amount, Product toProduct) {
@@ -48,13 +47,13 @@ public class BankingOperation {
         History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.INCOMINGCASH, amount, "", toProduct.getId()));
     }
 
-    public boolean outcomingCashOperation(Integer amount, Product fromProduct) {
-        if (fromProduct.getCash(amount)) {
+    public void outcomingCashOperation(Integer amount, Product fromProduct) throws Exception {
+        try{
+            fromProduct.getCash(amount);
             History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.OUTCOMINGCASH, amount, fromProduct.getId(), ""));
-            return true;
-        } else {
+        } catch (Exception e){
             History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.REJECTEDCASH, amount, fromProduct.getId(), ""));
-            return false;
+            throw e;
         }
     }
 
