@@ -31,10 +31,14 @@ public class Bank {
         return obj;
     }
 
-    public boolean transferOperation(Integer amount, String fromProductId, String toProductId) {
+    public void transferOperation(Integer amount, String fromProductId, String toProductId) throws RuntimeException {
         Product fromProduct = getProduct(fromProductId);
         Product toProduct = getProduct(toProductId);
-        return new BankingOperation().transferOperation(amount, fromProduct, toProduct);
+        try {
+            new BankingOperation().transferOperation(amount, fromProduct, toProduct);
+        } catch (Exception e) {
+
+        }
     }
 
     public void incomingCashOperation(Integer amount, String toProductId) {
@@ -42,9 +46,13 @@ public class Bank {
         new BankingOperation().incomingCashOperation(amount, toProduct);
     }
 
-    public boolean outcomingCashOperation(Integer amount, String fromProductId) {
+    public void outcomingCashOperation(Integer amount, String fromProductId) throws Exception {
         Product fromProduct = getProduct(fromProductId);
-        return new BankingOperation().outcomingCashOperation(amount, fromProduct);
+        try {
+            new BankingOperation().outcomingCashOperation(amount, fromProduct);
+        } catch (Exception e) {
+
+        }
     }
 
     private boolean removeProduct (String productId) {
@@ -58,10 +66,6 @@ public class Bank {
 
         }
         return false;
-    }
-
-    public void test() {
-        new BankingOperation().transferOperation(200, products.get(0), products.get(1));
     }
 
     public void removeProduct(Client client, String productId) {

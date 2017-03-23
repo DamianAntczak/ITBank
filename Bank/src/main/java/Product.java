@@ -42,15 +42,14 @@ public abstract class Product {
         return this.createdAt;
     }
 
-    public boolean canClose(){
-        return balance > 0;
-    }
+
 
     public String toString(){
         return "Product - " + this.name + " numer - "+this.id+" dla użytkownika - "+this.ownerId+" : balans - "+this.balance + ", debet - "+this.debit;
     }
 
     abstract void addCash(double amount);
-    abstract boolean getCash(double amount);
+    abstract double getCash(double amount) throws RuntimeException;
     abstract double close(int numberOfMonths);
+    abstract boolean canClose();
 }

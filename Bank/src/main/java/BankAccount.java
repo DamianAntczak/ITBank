@@ -15,23 +15,31 @@ public class BankAccount extends Product implements Debit{
         this.balance += amount;
     }
 
-    public boolean getCash(double amount){
+    public double getCash(double amount) throws RuntimeException {
         if(this.balance + this.debit >= amount){
             this.balance -= amount;
-            return true;
+            return amount;
         }
         else{
-            return false;
+            throw new RuntimeException("Cannot get cash from bank account.");
         }
     }
 
     @Override
+    //Get cash and close the account
     double close(int numberOfMonths) {
-        return 0;
+        double balance = this.balance;
+        this.balance = 0;
+        return balance;
     }
 
     @Override
     public void setDebit(double amount) {
         this.debit = amount;
+    }
+
+    @Override
+    boolean canClose() {
+        return this.balance >= 0;
     }
 }
