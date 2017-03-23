@@ -16,7 +16,7 @@ public class Deposit extends Product {
 
     @Override
     void addCash(double amount) {
-        this.balance = amount;
+        this.balance += amount;
     }
 
     @Override
