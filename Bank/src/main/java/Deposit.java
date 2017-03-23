@@ -26,8 +26,15 @@ public class Deposit extends Product {
 
     @Override
     double close(int numberOfMonths) {
-        return this.calculate(numberOfMonths);
+        double amount = this.calculate(numberOfMonths);
+        this.balance = 0;
+        return amount;
     }
 
+    double terminate(){
+        double amount = this.balance;
+        this.balance = 0;
+        return amount;
+    }
 
 }
