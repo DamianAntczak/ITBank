@@ -37,7 +37,7 @@ public class BankingOperation {
             History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.INCOMINGTRANSFER, amount, fromProduct.getId(), toProduct.getId()));
             History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.OUTCOMINGTRANSFER, amount, toProduct.getId(), fromProduct.getId()));
         } catch (Exception e) {
-            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.REJECTEDTRANSFER, amount, toProduct.getId(), fromProduct.getId()));
+            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.REJECTEDTRANSFER, amount, fromProduct.getId(), toProduct.getId()));
             throw e;
         }
     }
@@ -56,9 +56,6 @@ public class BankingOperation {
             throw e;
         }
     }
-
-
-
 }
 
 

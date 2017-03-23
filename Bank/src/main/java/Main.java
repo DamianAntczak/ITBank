@@ -14,8 +14,8 @@ public class Main {
         BankAccount ba = new BankAccount("1234");
         ba.balance = 20000;
 
-        //testOdsetek();
-        //testLokaty();
+        testOdsetek();
+        testLokaty();
         testHistory();
     }
 

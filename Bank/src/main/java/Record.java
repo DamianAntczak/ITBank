@@ -3,7 +3,7 @@ import java.util.Date;
 /**
  * Created by marcinkarmelita on 16/03/17.
  */
-public abstract class Record implements RecordInterface {
+public abstract class Record implements Printable {
     String id;
     Date date;
     BankingOperation.BankingOperationType type;
