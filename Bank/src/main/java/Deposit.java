@@ -20,8 +20,9 @@ public class Deposit extends Product {
     }
 
     @Override
-    boolean getCash(double amount) {
-        return false;
+    double getCash(double amount) {
+        new RuntimeException("Cannot get cash from deposite. Only terminate");
+        return 0;
     }
 
     @Override
@@ -29,6 +30,16 @@ public class Deposit extends Product {
         double amount = this.calculate(numberOfMonths);
         this.balance = 0;
         return amount;
+    }
+
+    @Override
+    boolean canClose() {
+        if(this.balance > 0){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     double terminate(){

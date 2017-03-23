@@ -11,8 +11,14 @@ public class Interest {
     }
 
     public double InterestCalculation(int numberOfMonths){
-        int numberOfCapitalization = numberOfMonths / interestFrequency.getValue();
-        System.out.println(numberOfCapitalization);
-        return Math.pow(1 + (percent/100),Math.floor(numberOfCapitalization));
+        if(this.interestFrequency == InterestFrequency.yearly) {
+            int numberOfCapitalization = numberOfMonths / interestFrequency.getValue();
+            System.out.println(numberOfCapitalization);
+            return Math.pow(1 + (percent / 100), Math.floor(numberOfCapitalization));
+        }
+        else{
+            int numberOfCapitalization = numberOfMonths / interestFrequency.getValue();
+            return Math.pow(1 + ((percent / 100)/numberOfCapitalization), Math.floor(numberOfCapitalization));
+        }
     }
 }
