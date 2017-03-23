@@ -20,7 +20,7 @@ public class CreditTest {
 
     @After
     public void tearDown() throws Exception {
-
+        credit = null;
     }
 
 

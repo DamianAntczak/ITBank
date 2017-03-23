@@ -22,7 +22,7 @@ public class ClientTest {
 
     @After
     public void tearDown() throws Exception {
-
+        client = null;
     }
 
 

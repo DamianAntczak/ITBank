@@ -19,7 +19,7 @@ public class BankTest {
 
     @After
     public void tearDown() throws Exception {
-
+        bank = null;
     }
 
     @Test
