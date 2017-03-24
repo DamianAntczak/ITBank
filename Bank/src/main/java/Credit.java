@@ -1,7 +1,7 @@
 /**
  * Created by krzysztof on 16/03/2017.
  */
-public class Credit extends Product {
+public class Credit extends Product implements Cashable {
     private Interest interest;
 
     public Credit(String ownerId, Interest interest, double amount){
@@ -14,13 +14,11 @@ public class Credit extends Product {
         return  this.balance * this.interest.InterestCalculation(numberOfMonths);
     }
 
-    @Override
-    void addCash(double amount) {
+    public void addCash(double amount) {
         this.balance += amount;
     }
 
-    @Override
-    double getCash(double amount) throws RuntimeException {
+    public double getCash(double amount) throws RuntimeException {
         if(this.balance + this.debit >= amount){
             this.balance -= amount;
             return amount;

@@ -3,7 +3,7 @@ import java.util.Date;
 /**
  * Created by student on 10.03.2017.
  */
-public class BankAccount extends Product implements Debit{
+public class BankAccount extends Product implements Debit, Cashable{
 
     public BankAccount(String ownerId){
         super(ownerId,"Konto osobiste");
