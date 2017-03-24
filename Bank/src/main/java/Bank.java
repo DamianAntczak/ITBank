@@ -26,19 +26,15 @@ public class Bank {
     }
 
     private Product getProduct(String productId) {
-        Predicate<Product> predicate = c-> c.getId().equals(productId);
-        Product  obj = products.stream().filter(predicate).findFirst().get();
+        Predicate<Product> predicate = c -> c.getId().equals(productId);
+        Product obj = products.stream().filter(predicate).findFirst().get();
         return obj;
     }
 
     public void transferOperation(Integer amount, String fromProductId, String toProductId) throws RuntimeException {
         Product fromProduct = getProduct(fromProductId);
         Product toProduct = getProduct(toProductId);
-        try {
-            new BankingOperation().transferOperation(amount, (Cashable) fromProduct, (Cashable) toProduct);
-        } catch (Exception e) {
-
-        }
+        new BankingOperation().transferOperation(amount, (Cashable) fromProduct, (Cashable) toProduct);
     }
 
     public void incomingCashOperation(Integer amount, String toProductId) {
@@ -46,19 +42,15 @@ public class Bank {
         new BankingOperation().incomingCashOperation(amount, (Cashable) toProduct);
     }
 
-    public void outcomingCashOperation(Integer amount, String fromProductId) throws Exception {
+    public void outcomingCashOperation(Integer amount, String fromProductId) throws RuntimeException {
         Product fromProduct = getProduct(fromProductId);
-        try {
-            new BankingOperation().outcomingCashOperation(amount, (Cashable) fromProduct);
-        } catch (Exception e) {
-
-        }
+        new BankingOperation().outcomingCashOperation(amount, (Cashable) fromProduct);
     }
 
-    private boolean removeProduct (String productId) {
+    private boolean removeProduct(String productId) {
         for (Product product : products) {
             Product prodToDel = null;
-            if (product.id == productId){
+            if (product.id == productId) {
                 prodToDel = product;
                 products.remove(prodToDel);
                 return true;

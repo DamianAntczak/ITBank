@@ -30,7 +30,7 @@ public class BankingOperation {
         this.date = new Date();
     }
 
-    public void transferOperation(Integer amount, Cashable fromProduct, Cashable toProduct) throws Exception {
+    public void transferOperation(Integer amount, Cashable fromProduct, Cashable toProduct) throws RuntimeException {
         Product from = (Product) fromProduct;
         Product to = (Product) toProduct;
         try {
@@ -49,7 +49,7 @@ public class BankingOperation {
         History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.INCOMINGCASH, amount, "", ((Product)toProduct).getId()));
     }
 
-    public void outcomingCashOperation(Integer amount, Cashable fromProduct) throws Exception {
+    public void outcomingCashOperation(Integer amount, Cashable fromProduct) throws RuntimeException {
         try{
             fromProduct.getCash(amount);
             History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.OUTCOMINGCASH, amount, ((Product )fromProduct).getId(), ""));
