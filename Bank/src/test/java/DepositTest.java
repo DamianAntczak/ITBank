@@ -23,13 +23,6 @@ public class DepositTest {
     }
 
     @Test
-    public void addCash() throws Exception{
-        deposit.addCash(2000);
-        Assert.assertEquals(deposit.getBalance(),7000,0.000001);
-    }
-
-
-    @Test
     public void close() throws Exception{
         double amount = deposit.close(12);
         Assert.assertEquals(amount,5250,0.00001);

@@ -30,29 +30,31 @@ public class BankingOperation {
         this.date = new Date();
     }
 
-    public void transferOperation(Integer amount, Product fromProduct, Product toProduct) throws Exception {
+    public void transferOperation(Integer amount, Cashable fromProduct, Cashable toProduct) throws Exception {
+        Product from = (Product) fromProduct;
+        Product to = (Product) toProduct;
         try {
             fromProduct.getCash(amount);
             toProduct.addCash(amount);
-            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.INCOMINGTRANSFER, amount, fromProduct.getId(), toProduct.getId()));
-            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.OUTCOMINGTRANSFER, amount, toProduct.getId(), fromProduct.getId()));
+            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.INCOMINGTRANSFER, amount, from.getId(),  to.getId()));
+            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.OUTCOMINGTRANSFER, amount, to.getId(),  from.getId()));
         } catch (Exception e) {
-            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.REJECTEDTRANSFER, amount, fromProduct.getId(), toProduct.getId()));
+            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.REJECTEDTRANSFER, amount, from.getId(), to.getId()));
             throw e;
         }
     }
 
-    public void incomingCashOperation(Integer amount, Product toProduct) {
+    public void incomingCashOperation(Integer amount, Cashable toProduct) {
         toProduct.addCash(amount);
-        History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.INCOMINGCASH, amount, "", toProduct.getId()));
+        History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.INCOMINGCASH, amount, "", ((Product)toProduct).getId()));
     }
 
-    public void outcomingCashOperation(Integer amount, Product fromProduct) throws Exception {
+    public void outcomingCashOperation(Integer amount, Cashable fromProduct) throws Exception {
         try{
             fromProduct.getCash(amount);
-            History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.OUTCOMINGCASH, amount, fromProduct.getId(), ""));
+            History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.OUTCOMINGCASH, amount, ((Product )fromProduct).getId(), ""));
         } catch (Exception e){
-            History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.REJECTEDCASH, amount, fromProduct.getId(), ""));
+            History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.REJECTEDCASH, amount, ((Product) fromProduct).getId(), ""));
             throw e;
         }
     }

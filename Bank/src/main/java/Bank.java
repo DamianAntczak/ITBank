@@ -35,7 +35,7 @@ public class Bank {
         Product fromProduct = getProduct(fromProductId);
         Product toProduct = getProduct(toProductId);
         try {
-            new BankingOperation().transferOperation(amount, fromProduct, toProduct);
+            new BankingOperation().transferOperation(amount, (Cashable) fromProduct, (Cashable) toProduct);
         } catch (Exception e) {
 
         }
@@ -43,13 +43,13 @@ public class Bank {
 
     public void incomingCashOperation(Integer amount, String toProductId) {
         Product toProduct = getProduct(toProductId);
-        new BankingOperation().incomingCashOperation(amount, toProduct);
+        new BankingOperation().incomingCashOperation(amount, (Cashable) toProduct);
     }
 
     public void outcomingCashOperation(Integer amount, String fromProductId) throws Exception {
         Product fromProduct = getProduct(fromProductId);
         try {
-            new BankingOperation().outcomingCashOperation(amount, fromProduct);
+            new BankingOperation().outcomingCashOperation(amount, (Cashable) fromProduct);
         } catch (Exception e) {
 
         }

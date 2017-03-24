@@ -30,7 +30,7 @@ public class BankingOperationTest {
         Product fromProduct = new BankAccount("765984327574385");
         Product toProduct = new BankAccount("45378783429");
         BankingOperation bankingOperation = new BankingOperation();
-        bankingOperation.transferOperation(200, fromProduct, toProduct);
+        bankingOperation.transferOperation(200, (Cashable) fromProduct, (Cashable) toProduct);
     }
 
     @Test
@@ -38,16 +38,16 @@ public class BankingOperationTest {
         // (MK): Balance at newly created account equals 0
         Product fromProduct = new BankAccount("765984327574385");
         Product toProduct = new BankAccount("45378783429");
-        fromProduct.addCash(500);
+        ((Cashable) fromProduct).addCash(500);
         BankingOperation bankingOperation = new BankingOperation();
-        bankingOperation.transferOperation(200, fromProduct, toProduct);
+        bankingOperation.transferOperation(200,(Cashable) fromProduct, (Cashable) toProduct);
     }
 
     @Test
     public void incomingCashOperation() throws Exception {
         Product toProduct = new BankAccount("45378783429");
         BankingOperation bankingOperation = new BankingOperation();
-        bankingOperation.incomingCashOperation(500, toProduct);
+        bankingOperation.incomingCashOperation(500,(Cashable) toProduct);
         assertEquals(toProduct.getBalance(), 500, 0.1);
     }
 
@@ -55,12 +55,12 @@ public class BankingOperationTest {
     public void outcomingCashOperationException() throws Exception {
         Product fromProduct = new BankAccount("45378783429");
         BankingOperation bankingOperation = new BankingOperation();
-        bankingOperation.outcomingCashOperation(200, fromProduct);
+        bankingOperation.outcomingCashOperation(200, (Cashable) fromProduct);
     }
 
     @Test
     public void outcomingCashOperationSuccess() throws Exception {
-        Product fromProduct = new BankAccount("45378783429");
+        BankAccount fromProduct = new BankAccount("45378783429");
         fromProduct.addCash(500);
         BankingOperation bankingOperation = new BankingOperation();
         bankingOperation.outcomingCashOperation(200, fromProduct);
