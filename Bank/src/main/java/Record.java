@@ -7,11 +7,13 @@ public abstract class Record implements Printable {
     String id;
     Date date;
     BankingOperation.BankingOperationType type;
+    Double actualBalance;
 
-    public Record(String id, Date date, BankingOperation.BankingOperationType type) {
+    public Record(String id, Date date, BankingOperation.BankingOperationType type, Double actualBalance) {
         this.id = id;
         this.date = date;
         this.type = type;
+        this.actualBalance = actualBalance;
     }
 
     public String getId() {

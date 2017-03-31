@@ -19,9 +19,9 @@ import static org.junit.Assert.*;
 public class HistoryTest {
     @Test
     public void filterByID() throws Exception {
-        Record record1 = new RecordForAction("123", new Date(), BankingOperation.BankingOperationType.incoming_cash, "123122");
-        Record record2 = new RecordForAction("124", new Date(), BankingOperation.BankingOperationType.incoming_cash, "123122");
-        Record record3 = new RecordForAction("125", new Date(), BankingOperation.BankingOperationType.incoming_cash, "123124");
+        Record record1 = new RecordForAction("123", new Date(), BankingOperation.BankingOperationType.incoming_cash,0.0, "123122");
+        Record record2 = new RecordForAction("124", new Date(), BankingOperation.BankingOperationType.incoming_cash, 0.0, "123122");
+        Record record3 = new RecordForAction("125", new Date(), BankingOperation.BankingOperationType.incoming_cash, 0.0, "123124");
 
         History.getInstance().addRecord(record1);
         History.getInstance().addRecord(record2);
@@ -35,9 +35,9 @@ public class HistoryTest {
 
     @Test
     public void filterByType() throws Exception {
-        Record r1 = new RecordForAction("1", new Date(), BankingOperation.BankingOperationType.incoming_cash, "1234");
-        Record r2 = new RecordForTransfer("2", new Date(), BankingOperation.BankingOperationType.transfer,200,"125","1234");
-        Record r3 = new RecordForTransfer("3", new Date(), BankingOperation.BankingOperationType.transfer,400,"545","4856");
+        Record r1 = new RecordForAction("1", new Date(), BankingOperation.BankingOperationType.incoming_cash,0.0, "1234");
+        Record r2 = new RecordForTransfer("2", new Date(), BankingOperation.BankingOperationType.transfer,0.0,200,"125","1234");
+        Record r3 = new RecordForTransfer("3", new Date(), BankingOperation.BankingOperationType.transfer, 0.0,400,"545","4856");
 
         History.getInstance().addRecord(r1);
         History.getInstance().addRecord(r2);
@@ -53,11 +53,11 @@ public class HistoryTest {
     public void filterByDate() throws Exception {
         Calendar c = Calendar.getInstance();
         c.set(2017,Calendar.MARCH, 24);
-        Record r1 = new RecordForAction("1", c.getTime(), BankingOperation.BankingOperationType.incoming_cash, "123");
+        Record r1 = new RecordForAction("1", c.getTime(), BankingOperation.BankingOperationType.incoming_cash, 0.0, "123");
         c.set(2017,Calendar.MARCH, 18);
-        Record r2 = new RecordForAction("2", c.getTime(), BankingOperation.BankingOperationType.transfer, "345");
+        Record r2 = new RecordForAction("2", c.getTime(), BankingOperation.BankingOperationType.transfer, 0.0, "345");
         c.set(2017,Calendar.JANUARY, 18);
-        Record r3 = new RecordForAction("3", c.getTime(), BankingOperation.BankingOperationType.transfer, "345");
+        Record r3 = new RecordForAction("3", c.getTime(), BankingOperation.BankingOperationType.transfer, 0.0, "345");
 
         History.getInstance().addRecord(r1);
         History.getInstance().addRecord(r2);

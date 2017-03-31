@@ -8,8 +8,8 @@ public class RecordForAction extends Record {
     private String productNo;
 
 
-    public RecordForAction(String id, Date date, BankingOperation.BankingOperationType type, String productNo) {
-        super(id, date, type);
+    public RecordForAction(String id, Date date, BankingOperation.BankingOperationType type, Double actualBalance, String productNo) {
+        super(id, date, type, actualBalance);
         this.productNo = productNo;
     }
 
@@ -20,11 +20,12 @@ public class RecordForAction extends Record {
 
     @Override
     public String toString() {
-        String string = "REKORD: \n";
-        string += "ID: " + this.id + "\n";
-        string += "Date: " + this.date.toString() + "\n";
-        string += "Type: " + this.type.toString() + "\n";
-        string += "Number: " + this.productNo + "\n";
+        String string = "REKORD: " + System.lineSeparator();
+        string += "ID: " + this.id + System.lineSeparator();
+        string += "Date: " + this.date.toString() + System.lineSeparator();
+        string += "Type: " + this.type.toString() + System.lineSeparator();
+        string += "Balance: " + this.actualBalance.toString() + System.lineSeparator();
+        string += "Number: " + this.productNo + System.lineSeparator();
         return string;
     }
 }

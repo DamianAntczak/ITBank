@@ -46,4 +46,8 @@ public class Client {
     public void requestReport(Report report) {
         report.print();
     }
+
+    public void requestReportToFile(Report report, BankingOperation.BankingOperationType type) {
+        report.printToFile(this.getId(), type);
+    }
 }

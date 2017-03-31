@@ -6,8 +6,8 @@ public class RecordForTransfer extends Record {
     private String toProductNo;
 
 
-    public RecordForTransfer(String id, Date date, BankingOperation.BankingOperationType type, Integer amount, String fromProductNo, String toProductNo) {
-        super(id, date, type);
+    public RecordForTransfer(String id, Date date, BankingOperation.BankingOperationType type, Double actualBalance, Integer amount, String fromProductNo, String toProductNo) {
+        super(id, date, type, actualBalance);
         this.amount = amount;
         this.fromProductNo = fromProductNo;
         this.toProductNo = toProductNo;
@@ -20,13 +20,14 @@ public class RecordForTransfer extends Record {
 
     @Override
     public String toString() {
-        String string = "REKORD: \n";
-        string += "ID: " + this.id + "\n";
-        string += "Date: " + this.date.toString() + "\n";
-        string += "Type: " + this.type.toString() + "\n";
-        string += "Amount: " + this.amount.toString() + "\n";
-        string += "From: " + this.fromProductNo + "\n";
-        string += "To: " + this.toProductNo + "\n";
+        String string = "REKORD:" + System.lineSeparator();
+        string += "ID: " + this.id + System.lineSeparator();
+        string += "Date: " + this.date.toString() + System.lineSeparator();
+        string += "Type: " + this.type.toString() + System.lineSeparator();
+        string += "Balance: " + this.actualBalance.toString() + System.lineSeparator();
+        string += "Amount: " + this.amount.toString() + System.lineSeparator();
+        string += "From: " + this.fromProductNo + System.lineSeparator();
+        string += "To: " + this.toProductNo + System.lineSeparator();
         return string;
     }
 }

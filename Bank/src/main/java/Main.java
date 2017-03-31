@@ -93,8 +93,10 @@ public class Main {
         Predicate<Record> predicateForIncomingCash = (p) -> p.getType().equals(BankingOperation.BankingOperationType.incoming_cash);
         Predicate<Record> predicateForOutcomingCash = (p) -> p.getType().equals(BankingOperation.BankingOperationType.outcoming_cash);
 
-        client1.requestReport(bank.createReportFor(predicateForTransfer));
-        client2.requestReport(bank.createReportFor(predicateForIncomingCash));
+
+
+        client1.requestReportToFile(bank.createReportFor(predicateForTransfer), BankingOperation.BankingOperationType.transfer);
+        client2.requestReportToFile(bank.createReportFor(predicateForIncomingCash), BankingOperation.BankingOperationType.incoming_cash);
         client2.requestReport(bank.createReportFor(predicateForOutcomingCash));
     }
 }

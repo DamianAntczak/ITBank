@@ -50,30 +50,30 @@ public class BankingOperation {
         try {
             fromProduct.getCash(amount);
             toProduct.addCash(amount);
-            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.transfer, amount, from.getId(),  to.getId()));
+            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.transfer, from.getBalance(), amount, from.getId(),  to.getId()));
         } catch (Exception e) {
-            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.rejected_transfer, amount, from.getId(), to.getId()));
+            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.rejected_transfer, from.getBalance(), amount, from.getId(), to.getId()));
             throw e;
         }
     }
 
     public void incomingCashOperation(Integer amount, Cashable toProduct) {
         toProduct.addCash(amount);
-        History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.incoming_cash, amount, "", ((Product)toProduct).getId()));
+        History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.incoming_cash, ((Product)toProduct).getBalance(), amount, "", ((Product)toProduct).getId()));
     }
 
     public void outcomingCashOperation(Integer amount, Cashable fromProduct) throws RuntimeException {
         try{
             fromProduct.getCash(amount);
-            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.outcoming_cash, amount, ((Product )fromProduct).getId(), ""));
+            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.outcoming_cash, ((Product)fromProduct).getBalance(), amount, ((Product )fromProduct).getId(), ""));
         } catch (Exception e){
-            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.rejected_cash, amount, ((Product) fromProduct).getId(), ""));
+            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.rejected_cash, ((Product)fromProduct).getBalance(), amount, ((Product) fromProduct).getId(), ""));
             throw e;
         }
     }
 
     public void removingOperation(String productId, boolean succeeded){
-        History.getInstance().addRecord(new RecordForAction(this.id, this.date, succeeded ? BankingOperation.BankingOperationType.product_removed : BankingOperation.BankingOperationType.product_removed_to_denied, productId));
+        History.getInstance().addRecord(new RecordForAction(this.id, this.date, succeeded ? BankingOperation.BankingOperationType.product_removed : BankingOperation.BankingOperationType.product_removed_to_denied, 0.0, productId));
     }
 
 }

@@ -43,11 +43,11 @@ public abstract class Product {
 
     @Override
     public String toString() {
-        String string = "PRODUCT: \n";
-        string += "ID: " + this.id + "\n";
-        string += "Created at: " + this.createdAt.toString() + "\n";
-        //string += "Type: " + this.ProductType.toString() + "\n";
-        string += "Owner id: " + this.ownerId + "\n";
+        String string = "PRODUCT:" + System.lineSeparator();
+        string += "ID: " + this.id + System.lineSeparator();
+        string += "Created at: " + this.createdAt.toString() + System.lineSeparator();
+        //string += "Type: " + this.ProductType.toString() + System.lineSeparator();
+        string += "Owner id: " + this.ownerId + System.lineSeparator();
         return string;
     }
 
