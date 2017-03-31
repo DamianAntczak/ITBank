@@ -8,7 +8,7 @@ public class NumberFactoryTest {
     NumberFactory fixture;
 
     @Test
-    public void createNumberForClient() throws Exception {
+    public void testClientNumberInc() throws Exception {
         Integer firstValue = Integer.valueOf(fixture.getInstance().createNumberForClient());
         Integer secondValue = Integer.valueOf(fixture.getInstance().createNumberForClient());
 
@@ -16,7 +16,7 @@ public class NumberFactoryTest {
     }
 
     @Test
-    public void createNumberForProduct() throws Exception {
+    public void testProductNumberInc() throws Exception {
 
         String productNumber1 = fixture.getInstance().createNumberForProduct();
         String productNumber2 = fixture.getInstance().createNumberForProduct();
@@ -27,4 +27,14 @@ public class NumberFactoryTest {
         Assert.assertTrue(firstValue + 1 == secondValue);
     }
 
+    @Test
+    public void testBankingOperationInc() {
+        String bankingOperationNumber1 = fixture.getInstance().createNumberForBankingOperation();
+        String bankingOperationNumber2 = fixture.getInstance().createNumberForBankingOperation();
+
+        Integer firstValue = Integer.valueOf(bankingOperationNumber1.substring(bankingOperationNumber1.length()-4, bankingOperationNumber1.length()));
+        Integer secondValue = Integer.valueOf(bankingOperationNumber2.substring(bankingOperationNumber2.length()-4, bankingOperationNumber2.length()));
+
+        Assert.assertTrue(firstValue + 1 == secondValue);
+    }
 }
