@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import java.util.function.Predicate;
@@ -68,4 +69,5 @@ public class Bank {
     public Report createReportFor(Predicate<Record> predicate) {
         return (new Report(History.getInstance().filter(predicate)));
     }
+
 }

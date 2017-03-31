@@ -59,15 +59,15 @@ public class BankingOperation {
 
     public void incomingCashOperation(Integer amount, Cashable toProduct) {
         toProduct.addCash(amount);
-        History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.incoming_cash, amount, "", ((Product)toProduct).getId()));
+        History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.incoming_cash, amount, "", ((Product)toProduct).getId()));
     }
 
     public void outcomingCashOperation(Integer amount, Cashable fromProduct) throws RuntimeException {
         try{
             fromProduct.getCash(amount);
-            History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.outcoming_cash, amount, ((Product )fromProduct).getId(), ""));
+            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.outcoming_cash, amount, ((Product )fromProduct).getId(), ""));
         } catch (Exception e){
-            History.getInstance().addRecord(new RecordForCash(this.id, this.date, BankingOperationType.rejected_cash, amount, ((Product) fromProduct).getId(), ""));
+            History.getInstance().addRecord(new RecordForTransfer(this.id, this.date, BankingOperationType.rejected_cash, amount, ((Product) fromProduct).getId(), ""));
             throw e;
         }
     }

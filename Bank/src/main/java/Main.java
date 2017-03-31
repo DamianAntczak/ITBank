@@ -84,14 +84,17 @@ public class Main {
 
         bank.incomingCashOperation(500, client1.getProductId(0));
         bank.incomingCashOperation(666, client2.getProductId(0));
+        bank.outcomingCashOperation(123, client2.getProductId(0));
         bank.transferOperation(300, client1.getProductId(0), client2.getProductId(0));
 
         //bank.removeProduct(client1, client1.getProductId(0));
 
         Predicate<Record> predicateForTransfer = (p) -> p.getType().equals(BankingOperation.BankingOperationType.transfer);
         Predicate<Record> predicateForIncomingCash = (p) -> p.getType().equals(BankingOperation.BankingOperationType.incoming_cash);
+        Predicate<Record> predicateForOutcomingCash = (p) -> p.getType().equals(BankingOperation.BankingOperationType.outcoming_cash);
 
         client1.requestReport(bank.createReportFor(predicateForTransfer));
         client2.requestReport(bank.createReportFor(predicateForIncomingCash));
+        client2.requestReport(bank.createReportFor(predicateForOutcomingCash));
     }
 }
