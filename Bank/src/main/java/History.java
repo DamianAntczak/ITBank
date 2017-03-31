@@ -21,17 +21,6 @@ public class History {
         this.records.add(record);
     }
 
-    public void printRecords() {
-        for (Record record : records) {
-            record.print();
-        }
-    }
-
-//    Predicate<Product> predicate = c -> c.getId().equals(productId);
-//    Product obj = products.stream().filter(predicate).findFirst().get();
-//        return obj;
-//
-
     public List<Record> filter(Predicate<Record> predicate){
         return  History.getInstance().records.stream().filter(predicate).collect(Collectors.toList());
     }

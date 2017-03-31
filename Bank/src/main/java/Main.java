@@ -1,3 +1,5 @@
+import java.util.function.Predicate;
+
 /**
  * Created by student on 10.03.2017.
  */
@@ -17,6 +19,7 @@ public class Main {
         testOdsetek();
         testLokaty();
         testHistory();
+        testReports();
     }
 
     public static  void testBanku() {
@@ -66,8 +69,29 @@ public class Main {
         bank.transferOperation(200, client1.getProductId(0), client2.getProductId(0));
 
        bank.removeProduct(client1, client1.getProductId(0));
+    }
 
-        History.getInstance().printRecords();
+    public static void testReports() {
+        Bank bank = new Bank();
+        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
+        client1.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
+        client1.addProduct(bank.addProductForClient(new Credit(client1.getId(), new Interest(InterestFrequency.halfYearly, 4), 4000)));
 
+        Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
+        client2.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
+
+        client1.printAccounts();
+
+        bank.incomingCashOperation(500, client1.getProductId(0));
+        bank.incomingCashOperation(666, client2.getProductId(0));
+        bank.transferOperation(300, client1.getProductId(0), client2.getProductId(0));
+
+        //bank.removeProduct(client1, client1.getProductId(0));
+
+        Predicate<Record> predicateForTransfer = (p) -> p.getType().equals(BankingOperation.BankingOperationType.transfer);
+        Predicate<Record> predicateForIncomingCash = (p) -> p.getType().equals(BankingOperation.BankingOperationType.incoming_cash);
+
+        client1.requestReport(bank.createReportFor(predicateForTransfer));
+        client2.requestReport(bank.createReportFor(predicateForIncomingCash));
     }
 }

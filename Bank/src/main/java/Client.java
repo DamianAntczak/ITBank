@@ -43,5 +43,7 @@ public class Client {
         ownedProductsIds.remove(productIdtoRemove);
     }
 
-
+    public void requestReport(Report report) {
+        report.print();
+    }
 }

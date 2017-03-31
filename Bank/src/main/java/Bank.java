@@ -65,4 +65,7 @@ public class Bank {
         new BankingOperation().removingOperation(productId, true);
     }
 
+    public Report createReportFor(Predicate<Record> predicate) {
+        return (new Report(History.getInstance().filter(predicate)));
+    }
 }
