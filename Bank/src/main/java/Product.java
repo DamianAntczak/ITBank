@@ -31,22 +31,26 @@ public abstract class Product {
     public String getId(){
         return this.id;
     }
-
     public double getBalance(){
         return this.balance;
     }
-
     public Date getCreatedAt(){
         return this.createdAt;
     }
 
+    abstract double close(int numberOfMonths);
+    abstract boolean canClose();
 
-
-    public String toString(){
-        return "Product - " + this.name + " numer - "+this.id+" dla użytkownika - "+this.ownerId+" : balans - "+this.balance + ", debet - "+this.debit;
+    @Override
+    public String toString() {
+        String string = "PRODUCT: \n";
+        string += "ID: " + this.id + "\n";
+        string += "Created at: " + this.createdAt.toString() + "\n";
+        //string += "Type: " + this.ProductType.toString() + "\n";
+        string += "Owner id: " + this.ownerId + "\n";
+        return string;
     }
 
 
-    abstract double close(int numberOfMonths);
-    abstract boolean canClose();
+
 }

@@ -53,11 +53,11 @@ public class HistoryTest {
     public void filterByDate() throws Exception {
         Calendar c = Calendar.getInstance();
         c.set(2017,Calendar.MARCH, 24);
-        Record r1 = new RecordForAction("1", c.getTime(), BankingOperation.BankingOperationType.INCOMINGCASH, "123");
+        Record r1 = new RecordForAction("1", c.getTime(), BankingOperation.BankingOperationType.incoming_cash, "123");
         c.set(2017,Calendar.MARCH, 18);
-        Record r2 = new RecordForAction("2", c.getTime(), BankingOperation.BankingOperationType.INCOMINGCASH, "345");
+        Record r2 = new RecordForAction("2", c.getTime(), BankingOperation.BankingOperationType.transfer, "345");
         c.set(2017,Calendar.JANUARY, 18);
-        Record r3 = new RecordForAction("3", c.getTime(), BankingOperation.BankingOperationType.OUTCOMINGCASH, "345");
+        Record r3 = new RecordForAction("3", c.getTime(), BankingOperation.BankingOperationType.transfer, "345");
 
         History.getInstance().addRecord(r1);
         History.getInstance().addRecord(r2);
