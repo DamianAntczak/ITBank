@@ -5,7 +5,9 @@ import org.junit.Test;
 
 import java.text.DateFormat;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -45,6 +47,26 @@ public class HistoryTest {
         final List<Record> filterRecordList = History.getInstance().filter(predicate);
 
         Assert.assertEquals(2,filterRecordList.size());
+    }
+
+    @Test
+    public void filterByDate() throws Exception {
+        Calendar c = Calendar.getInstance();
+        c.set(2017,Calendar.MARCH, 24);
+        Record r1 = new RecordForAction("1", c.getTime(), BankingOperation.BankingOperationType.INCOMINGCASH, "123");
+        c.set(2017,Calendar.MARCH, 18);
+        Record r2 = new RecordForAction("2", c.getTime(), BankingOperation.BankingOperationType.INCOMINGCASH, "345");
+        c.set(2017,Calendar.JANUARY, 18);
+        Record r3 = new RecordForAction("3", c.getTime(), BankingOperation.BankingOperationType.OUTCOMINGCASH, "345");
+
+        History.getInstance().addRecord(r1);
+        History.getInstance().addRecord(r2);
+        History.getInstance().addRecord(r3);
+
+        Predicate<Record> predicate = (p) -> p.getDate().getMonth() == Calendar.MARCH;
+        final List<Record> filterRecordList = History.getInstance().filter(predicate);
+
+        Assert.assertEquals(2, filterRecordList.size());
     }
 
     @Test
