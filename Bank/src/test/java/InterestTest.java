@@ -22,7 +22,7 @@ public class InterestTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data(){
         return Arrays.asList(new Object[][] {
-                { InterestFrequency.yearly, 5, 1.05}, {InterestFrequency.quarterly, 5, 1.05094}
+                { InterestFrequency.yearly, 5, 1.05}, {InterestFrequency.quarterly, 5, 1.05094},{InterestFrequency.monthly,2,1.02019}
         });
     }
 

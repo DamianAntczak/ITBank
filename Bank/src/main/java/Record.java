@@ -14,4 +14,16 @@ public abstract class Record implements Printable {
         this.type = type;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public BankingOperation.BankingOperationType getType() {
+        return type;
+    }
+
 }
