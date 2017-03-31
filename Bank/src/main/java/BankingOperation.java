@@ -2,7 +2,6 @@
  * Created by marcinkarmelita on 10/03/17.
  */
 
-import java.rmi.server.UID;
 import java.util.Date;
 
 public class BankingOperation {
@@ -26,8 +25,12 @@ public class BankingOperation {
     private Date date;
 
     public BankingOperation() {
-        this.id = new UID().toString();
+        this.id = NumberFactory.getInstance().createNumberForBankingOperation();
         this.date = new Date();
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void transferOperation(Integer amount, Cashable fromProduct, Cashable toProduct) throws RuntimeException {

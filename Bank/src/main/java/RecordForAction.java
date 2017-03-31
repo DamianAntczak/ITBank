@@ -13,11 +13,6 @@ public class RecordForAction extends Record {
         this.productNo = productNo;
     }
 
-    public RecordForAction(BankingOperation.BankingOperationType type, String productNo) {
-        super(UUID.randomUUID().toString(), new Date(), type);
-        this.productNo = productNo;
-    }
-
     @Override
     public void print() {
         System.out.println(this.toString());

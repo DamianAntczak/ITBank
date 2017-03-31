@@ -1,22 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.UUID;
 import java.util.function.Predicate;
 
 /**
  * Created by student on 10.03.2017.
  */
 public class Bank {
-    //TODO: Add fields
-    private List<Client> clients = new ArrayList<Client>();
     private List<Product> products = new ArrayList<Product>();
 
     public Bank() {
     }
 
     public Client createClient(String name, String surname, String address) {
-        return new Client(UUID.randomUUID().toString(), name, surname, address);
+        return new Client(NumberFactory.getInstance().createNumberForClient(), name, surname, address);
     }
 
     public String addProductForClient(Product product) {
@@ -49,13 +46,12 @@ public class Bank {
 
     private boolean removeProduct(String productId) {
         for (Product product : products) {
-            Product prodToDel = null;
+            Product prodToDel;
             if (product.id == productId) {
                 prodToDel = product;
                 products.remove(prodToDel);
                 return true;
             }
-
         }
         return false;
     }
@@ -63,10 +59,10 @@ public class Bank {
     public void removeProduct(Client client, String productId) {
         if (this.removeProduct(productId)) {
             client.removeProductForId(productId);
-            History.getInstance().addRecord(new RecordForAction(BankingOperation.BankingOperationType.PRODUCTREMOVED, productId));
+//            History.getInstance().addRecord(new RecordForAction(BankingOperation.BankingOperationType.PRODUCTREMOVED, productId));
             return;
         }
-        History.getInstance().addRecord(new RecordForAction(BankingOperation.BankingOperationType.PRODUCTDENIEDTOREMOVE, productId));
+//        History.getInstance().addRecord(new RecordForAction(BankingOperation.BankingOperationType.PRODUCTDENIEDTOREMOVE, productId));
     }
 
 }

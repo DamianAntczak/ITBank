@@ -1,6 +1,4 @@
-import java.security.acl.Owner;
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * Created by student on 10.03.2017.
@@ -24,7 +22,7 @@ public abstract class Product {
     public Product(String ownerId, String name){
         createdAt = new Date();
         this.ownerId = ownerId;
-        id = UUID.randomUUID().toString();
+        id = NumberFactory.getInstance().createNumberForProduct();
         this.debit = 0;
         this.name = name;
     }

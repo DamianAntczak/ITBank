@@ -40,14 +40,14 @@ public class BankingOperationTest {
         Product toProduct = new BankAccount("45378783429");
         ((Cashable) fromProduct).addCash(500);
         BankingOperation bankingOperation = new BankingOperation();
-        bankingOperation.transferOperation(200,(Cashable) fromProduct, (Cashable) toProduct);
+        bankingOperation.transferOperation(200, (Cashable) fromProduct, (Cashable) toProduct);
     }
 
     @Test
     public void incomingCashOperation() throws Exception {
         Product toProduct = new BankAccount("45378783429");
         BankingOperation bankingOperation = new BankingOperation();
-        bankingOperation.incomingCashOperation(500,(Cashable) toProduct);
+        bankingOperation.incomingCashOperation(500, (Cashable) toProduct);
         assertEquals(toProduct.getBalance(), 500, 0.1);
     }
 

@@ -24,12 +24,7 @@ public class Deposit extends Product {
 
     @Override
     boolean canClose() {
-        if(this.balance > 0){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return this.balance > 0;
     }
 
     double terminate(){
