@@ -3,7 +3,7 @@
  */
 public class NumberFactory {
 
-    private static String swift = "09-0000-0001-1090-";
+    private static String swift = "PL09-0000-0001-1090-";
     private Integer lastClientNumber;
     private Integer lastProductNumber;
     private Integer lastBankingOperation;

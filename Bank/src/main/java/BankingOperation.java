@@ -61,6 +61,11 @@ public class BankingOperation {
             throw e;
         }
     }
+
+    public void removingOperation(String productId, boolean succeeded){
+        History.getInstance().addRecord(new RecordForAction(this.id, this.date, succeeded ? BankingOperation.BankingOperationType.PRODUCTREMOVED : BankingOperation.BankingOperationType.PRODUCTDENIEDTOREMOVE, productId));
+    }
+
 }
 
 

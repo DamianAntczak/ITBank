@@ -59,10 +59,10 @@ public class Bank {
     public void removeProduct(Client client, String productId) {
         if (this.removeProduct(productId)) {
             client.removeProductForId(productId);
-//            History.getInstance().addRecord(new RecordForAction(BankingOperation.BankingOperationType.PRODUCTREMOVED, productId));
+            new BankingOperation().removingOperation(productId, true);
             return;
         }
-//        History.getInstance().addRecord(new RecordForAction(BankingOperation.BankingOperationType.PRODUCTDENIEDTOREMOVE, productId));
+        new BankingOperation().removingOperation(productId, true);
     }
 
 }
