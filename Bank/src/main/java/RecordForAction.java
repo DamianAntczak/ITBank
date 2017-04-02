@@ -13,6 +13,10 @@ public class RecordForAction extends Record {
         this.productNo = productNo;
     }
 
+    public String getProductNo() {
+        return productNo;
+    }
+
     @Override
     public void print() {
         System.out.println(this.toString());

@@ -13,6 +13,14 @@ public class RecordForTransfer extends Record {
         this.toProductNo = toProductNo;
     }
 
+    public String getFromProductNo() {
+        return fromProductNo;
+    }
+
+    public String getToProductNo() {
+        return toProductNo;
+    }
+
     @Override
     public void print() {
         System.out.println(this.toString());
