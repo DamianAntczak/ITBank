@@ -3,6 +3,7 @@
  */
 
 import java.util.Date;
+import java.util.DoubleSummaryStatistics;
 
 public class BankingOperation {
     
@@ -16,7 +17,7 @@ public class BankingOperation {
 
         product_removed("product removed"),
         product_added("product added"),
-        product_removed_to_denied("product removed to denied");
+        product_denied_to_remove("product denied to remove");
 
         // Member to hold the name
         private String string;
@@ -73,7 +74,11 @@ public class BankingOperation {
     }
 
     public void removingOperation(String productId, boolean succeeded){
-        History.getInstance().addRecord(new RecordForAction(this.id, this.date, succeeded ? BankingOperation.BankingOperationType.product_removed : BankingOperation.BankingOperationType.product_removed_to_denied, 0.0, productId));
+        History.getInstance().addRecord(new RecordForAction(this.id, this.date, succeeded ? BankingOperation.BankingOperationType.product_removed : BankingOperation.BankingOperationType.product_denied_to_remove, 0.0, productId));
+    }
+
+    public void addingOperation(String productId, Double balance) {
+        History.getInstance().addRecord(new RecordForAction(this.id, this.date, BankingOperationType.product_added, balance, productId));
     }
 
 }

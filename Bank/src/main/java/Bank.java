@@ -19,7 +19,7 @@ public class Bank {
 
     public String addProductForClient(Product product) {
         products.add(product);
-
+        new BankingOperation().addingOperation(product.getId(), product.getBalance());
         return product.getId();
     }
 
