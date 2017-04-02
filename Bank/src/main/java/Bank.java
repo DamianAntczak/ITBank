@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.EnumSet;
 import java.util.List;
 
 import java.util.function.Predicate;
@@ -71,6 +72,13 @@ public class Bank {
     public Report createReportFor(String productId, List<BankingOperation.BankingOperationType> operationTypes, Date startDate, Date endDate) {
 
         List<Record> records = new ArrayList<>();
+
+        if (operationTypes == null) {
+            operationTypes = new ArrayList<>();
+            for (BankingOperation.BankingOperationType type : BankingOperation.BankingOperationType.values()) {
+                operationTypes.add(type);
+            }
+        }
 
         for (BankingOperation.BankingOperationType type : operationTypes) {
             if (type == BankingOperation.BankingOperationType.product_removed ||
