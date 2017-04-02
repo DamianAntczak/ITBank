@@ -29,6 +29,23 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-easymock-release-full -->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-easymock-release-full</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.easymock/easymock -->
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>3.4</version>
+        </dependency>
+
+
+
     </dependencies>
     
 </project>

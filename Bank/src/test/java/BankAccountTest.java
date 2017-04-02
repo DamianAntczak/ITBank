@@ -62,14 +62,4 @@ public class BankAccountTest {
         double cash = fixture.getCash(100);
         assumeTrue(fixture.getBalance() == -100);
     }
-
-    @Test
-    public void canClose() throws Exception {
-        fixture.setDebit(200);
-        assumeTrue(fixture.getBalance() == 0);
-        assumeTrue(fixture.canClose());
-        double cash = fixture.getCash(100);
-        assumeTrue(fixture.getBalance() == -100);
-        assumeFalse(fixture.canClose());
-    }
 }

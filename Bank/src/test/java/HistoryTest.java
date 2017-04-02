@@ -1,22 +1,35 @@
+import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
-import java.text.DateFormat;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.powermock.api.easymock.PowerMock.replay;
+import static org.powermock.api.easymock.PowerMock.verify;
 
 /**
  * Created by krzysztof on 23/03/2017.
  */
+
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(History.class)
 public class HistoryTest {
+
+    @Before
+    public void setUp() throws Exception {
+        replay(History.class);
+        verify(History.class);
+    }
+
     @Test
     public void filterByID() throws Exception {
         Record record1 = new RecordForAction("123", new Date(), BankingOperation.BankingOperationType.incoming_cash,0.0, "123122");
@@ -74,4 +87,12 @@ public class HistoryTest {
         assertNotNull(History.getInstance());
     }
 
+
+    @After
+    public void tearDown() throws Exception {
+
+    }
+    
 }
+
+

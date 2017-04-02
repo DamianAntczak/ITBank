@@ -5,7 +5,7 @@ public class Credit extends Product implements Cashable {
     private Interest interest;
 
     public Credit(String ownerId, Interest interest, double amount){
-        super(ownerId,"Kredyt");
+        super(ownerId,"Credit");
         this.interest = interest;
         addCash(amount);
     }
@@ -29,13 +29,12 @@ public class Credit extends Product implements Cashable {
     }
 
     @Override
-    double close(int numberOfMonths) {
-        return this.calculate(numberOfMonths);
-    }
+    double close(int numberOfMonths) throws RuntimeException {
+        if (this.balance >= 0) {
+            return this.calculate(numberOfMonths);
+        } else {
+            throw new RuntimeException("Cannot close credit with negative balance");
+        }
 
-    @Override
-    boolean canClose() {
-        return this.balance >= 0;
     }
-
 }

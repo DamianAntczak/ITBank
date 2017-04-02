@@ -10,6 +10,7 @@ public class NumberFactory {
 
     private static NumberFactory shared;
     private NumberFactory(){
+        // (MK): Initial state
         lastClientNumber = 7969;
         lastProductNumber = 6781;
         lastBankingOperation = 5493;
@@ -23,22 +24,22 @@ public class NumberFactory {
     }
 
     public String createNumberForClient() {
-        return String.format("%012d",++lastClientNumber);
+        return String.format("%012d", ++lastClientNumber);
     }
 
     public String createNumberForProduct() {
-        StringBuilder str = new StringBuilder(String.format("%012d",++lastProductNumber));
+        StringBuilder str = new StringBuilder(String.format("%012d", ++lastProductNumber));
         int idx = str.length() - 4;
 
         while (idx > 0) {
             str.insert(idx, "-");
-            idx = idx - 4;
+            idx -= 4;
         }
         return swift + str;
     }
 
     public String createNumberForBankingOperation() {
-        return String.format("%020d",++lastBankingOperation);
+        return String.format("%020d", ++lastBankingOperation);
     }
 
 }

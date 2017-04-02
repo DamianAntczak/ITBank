@@ -31,7 +31,7 @@ public class Main {
         Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
         client2.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
 
-        client1.printAccounts();
+        client1.print();
 
         //testOdsetek();
         testLokaty();
@@ -47,7 +47,7 @@ public class Main {
         Bank bank = new Bank();
         Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
         client1.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
-        client1.printAccounts();
+        client1.print();
         Deposit deposit = new Deposit(client1.getId(), new Interest(InterestFrequency.yearly,4),5000);
         System.out.println(deposit);
         System.out.println(deposit.close(12));
@@ -63,7 +63,7 @@ public class Main {
         Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
         client2.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
 
-        client1.printAccounts();
+        client1.print();
 
         bank.incomingCashOperation(500, client1.getProductId(0));
         bank.transferOperation(200, client1.getProductId(0), client2.getProductId(0));
@@ -80,7 +80,7 @@ public class Main {
         Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
         client2.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
 
-        client1.printAccounts();
+        client1.print();
 
         bank.incomingCashOperation(500, client1.getProductId(0));
         bank.incomingCashOperation(666, client2.getProductId(0));

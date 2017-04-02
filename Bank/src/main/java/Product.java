@@ -5,18 +5,11 @@ import java.util.Date;
  */
 public abstract class Product {
 
-    public enum ProductType {
-        ACCOUNT,
-        DEPOSIT,
-        CREDIT
-    }
-
     protected double debit;
     protected String ownerId;
     protected double balance;
     protected String id;
     protected Date createdAt;
-    protected String ownerID;
     protected String name;
 
     public Product(String ownerId, String name){
@@ -34,12 +27,12 @@ public abstract class Product {
     public double getBalance(){
         return this.balance;
     }
+
+    abstract double close(int numberOfMonths) throws RuntimeException;
+
     public Date getCreatedAt(){
         return this.createdAt;
     }
-
-    abstract double close(int numberOfMonths);
-    abstract boolean canClose();
 
     @Override
     public String toString() {
@@ -50,7 +43,4 @@ public abstract class Product {
         string += "Owner id: " + this.ownerId + System.lineSeparator();
         return string;
     }
-
-
-
 }

@@ -26,20 +26,19 @@ public class BankAccount extends Product implements Debit, Cashable{
     }
 
     @Override
-    //Get cash and close the account
-    double close(int numberOfMonths) {
-        double balance = this.balance;
-        this.balance = 0;
-        return balance;
+    //Close the account
+    double close(int numberOfMonths) throws RuntimeException{
+        if (this.balance >= 0) {
+            double balance = this.balance;
+            this.balance = 0;
+            return balance;
+        } else {
+            throw new RuntimeException("Cannot close bank account with negative balance.");
+        }
     }
 
     @Override
     public void setDebit(double amount) {
         this.debit = amount;
-    }
-
-    @Override
-    boolean canClose() {
-        return this.balance >= 0;
     }
 }
