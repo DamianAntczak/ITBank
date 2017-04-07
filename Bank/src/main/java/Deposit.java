@@ -11,7 +11,7 @@ public class Deposit extends Product {
     }
 
     private double calculate(int numberOfMonths) {
-        return  this.balance * this.interest.interestCalculation(numberOfMonths, balance);
+        return  this.balance + this.interest.interestCalculation(numberOfMonths, balance);
     }
 
     @Override
