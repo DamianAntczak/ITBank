@@ -1,24 +1,14 @@
 /**
  * Created by Damian on 16.03.2017.
  */
-public class Interest {
-    private double percent;
+public abstract  class Interest {
     private InterestFrequency interestFrequency;
+    private Product product;
 
-    public Interest(InterestFrequency interestFrequency, double percent){
+    public Interest(InterestFrequency interestFrequency, Product product){
         this.interestFrequency = interestFrequency;
-        this.percent = percent;
+        this.product = product;
     }
 
-    public double InterestCalculation(int numberOfMonths){
-        if(this.interestFrequency == InterestFrequency.yearly) {
-            int numberOfCapitalization = numberOfMonths / interestFrequency.getValue();
-            System.out.println(numberOfCapitalization);
-            return Math.pow(1 + (percent / 100), Math.floor(numberOfCapitalization));
-        }
-        else{
-            int numberOfCapitalization = numberOfMonths / interestFrequency.getValue();
-            return Math.pow(1 + ((percent / 100)/numberOfCapitalization), Math.floor(numberOfCapitalization));
-        }
-    }
+    protected abstract  double InterestCalculation(int numberOfMonths);
 }
