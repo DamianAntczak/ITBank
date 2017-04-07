@@ -8,5 +8,5 @@ public abstract  class Interest {
         this.interestFrequency = interestFrequency;
     }
 
-    protected abstract  double InterestCalculation(int numberOfMonths, double balance);
+    protected abstract double InterestCalculation(int numberOfMonths, double balance);
 }
