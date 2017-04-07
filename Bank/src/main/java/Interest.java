@@ -3,12 +3,10 @@
  */
 public abstract  class Interest {
     private InterestFrequency interestFrequency;
-    private Product product;
 
-    public Interest(InterestFrequency interestFrequency, Product product){
+    public Interest(InterestFrequency interestFrequency){
         this.interestFrequency = interestFrequency;
-        this.product = product;
     }
 
-    protected abstract  double InterestCalculation(int numberOfMonths);
+    protected abstract  double InterestCalculation(int numberOfMonths, double balance);
 }
