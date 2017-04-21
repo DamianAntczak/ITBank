@@ -26,4 +26,14 @@ public class Deposit extends Product {
         this.balance = 0;
         return amount;
     }
+
+    @Override
+    public void addCash(double amount) {
+        throw new RuntimeException("Not allowed");
+    }
+
+    @Override
+    public double getCash(double amount) throws RuntimeException {
+        throw new RuntimeException("Not allowed");
+    }
 }

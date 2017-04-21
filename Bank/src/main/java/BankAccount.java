@@ -3,7 +3,7 @@ import java.util.Date;
 /**
  * Created by student on 10.03.2017.
  */
-public class BankAccount  implements  IProduct, Cashable{
+public class BankAccount  implements  IProduct {
 
     protected String ownerId;
     protected double balance;
@@ -44,7 +44,7 @@ public class BankAccount  implements  IProduct, Cashable{
 
     @Override
     public String getId() {
-        return this.getId();
+        return id;
     }
 
     @Override
@@ -56,4 +56,5 @@ public class BankAccount  implements  IProduct, Cashable{
     public Date getCreatedAt() {
         return null;
     }
+
 }

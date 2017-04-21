@@ -7,7 +7,6 @@ import java.util.UUID;
 public class RecordForAction extends Record {
     private String productNo;
 
-
     public RecordForAction(String id, Date date, BankingOperation.BankingOperationType type, Double actualBalance, String productNo) {
         super(id, date, type, actualBalance);
         this.productNo = productNo;
@@ -15,11 +14,6 @@ public class RecordForAction extends Record {
 
     public String getProductNo() {
         return productNo;
-    }
-
-    @Override
-    public void print() {
-        System.out.println(this.toString());
     }
 
     @Override

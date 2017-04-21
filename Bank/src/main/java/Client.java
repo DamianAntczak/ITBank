@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by student on 10.03.2017.
  */
-public class Client implements Printable {
+public class Client {
     private String id;
     private String name;
     private String surname;
@@ -26,10 +26,9 @@ public class Client implements Printable {
         ownedProductsIds.add(account);
     }
 
-    @Override
-    public void print() {
-        System.out.println(ownedProductsIds);
-    }
+//    public void print() {
+//        System.out.println(ownedProductsIds);
+//    }
 
     public List<String> getProductsIds() {
         return ownedProductsIds;

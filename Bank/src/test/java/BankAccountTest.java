@@ -10,6 +10,9 @@ import static org.junit.Assume.*;
 /**
  * Created by marcinkarmelita on 17/03/17.
  */
+
+// TODO (MK): Add missing tests.
+
 public class BankAccountTest {
 
     BankAccount fixture;

@@ -1,7 +1,7 @@
 /**
  * Created by krzysztof on 16/03/2017.
  */
-public class Credit extends Product implements Cashable {
+public class Credit extends Product {
     private Interest interest;
 
     public Credit(String ownerId, Interest interest, double amount){
