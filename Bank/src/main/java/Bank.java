@@ -11,9 +11,11 @@ import java.util.stream.Collectors;
  */
 public class Bank {
     private List<Product> products = new ArrayList<Product>();
+    private Mediator mediator;
     private String number = NumberFactory.getInstance().createNumberForBank("TTO");
 
     public Bank() {
+
     }
 
     public String getNumber() {
@@ -39,7 +41,7 @@ public class Bank {
     public void transferOperation(Integer amount, String fromProductId, String toProductId) throws RuntimeException {
         Product fromProduct = getProduct(fromProductId);
         Product toProduct = getProduct(toProductId);
-        new BankingOperation().transferOperation(amount, (Cashable) fromProduct, (Cashable) toProduct);
+        mediator.transferOperation(amount, fromProduct, toProduct);
     }
 
     public void incomingCashOperation(Integer amount, String toProductId) {
