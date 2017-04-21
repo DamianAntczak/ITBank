@@ -10,14 +10,4 @@ public class KIRMediator implements Mediator {
     public KIRMediator() {
         commands = new ArrayList<Command>();
     }
-
-    @Override
-    public void queueTransferOperation(Command command) throws RuntimeException {
-        commands.add(command);
-    }
-
-    @Override
-    public void queueReturnTransferOperation(Command command) throws RuntimeException {
-
-    }
 }

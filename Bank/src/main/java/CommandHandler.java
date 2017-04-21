@@ -17,10 +17,14 @@ public class CommandHandler {
 
     public void handleCommand(Command command) {
         // TODO (MK): Add command only if the command is not an internal banking operation.
-        commands.add(command);
+        if (command.isInternal()) {
+            command.execute();
+        } else {
+            commands.add(command);
+        }
     }
 
-    public void getExternalOperations() {
-
+    public List<Command> getExternalOperations() {
+        return commands;
     }
 }
