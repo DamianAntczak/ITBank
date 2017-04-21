@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  * Created by student on 10.03.2017.
  */
 public class Bank {
-    private List<Product> products = new ArrayList<Product>();
+    private List<IProduct> products = new ArrayList<IProduct>();
     private Mediator mediator;
     private String number = NumberFactory.getInstance().createNumberForBank("TTO");
 
@@ -26,38 +26,38 @@ public class Bank {
         return new Client(NumberFactory.getInstance().createNumberForClient(), name, surname, address);
     }
 
-    public String addProductForClient(Product product) {
+    public String addProductForClient(IProduct product) {
         products.add(product);
         new BankingOperation().addingOperation(product.getId(), product.getBalance());
         return product.getId();
     }
 
-    private Product getProduct(String productId) {
-        Predicate<Product> predicate = c -> c.getId().equals(productId);
-        Product obj = products.stream().filter(predicate).findFirst().get();
+    private IProduct getProduct(String productId) {
+        Predicate<IProduct> predicate = c -> c.getId().equals(productId);
+        IProduct obj = products.stream().filter(predicate).findFirst().get();
         return obj;
     }
 
     public void transferOperation(Integer amount, String fromProductId, String toProductId) throws RuntimeException {
-        Product fromProduct = getProduct(fromProductId);
-        Product toProduct = getProduct(toProductId);
+        IProduct fromProduct = getProduct(fromProductId);
+        IProduct toProduct = getProduct(toProductId);
         mediator.transferOperation(amount, fromProduct, toProduct);
     }
 
     public void incomingCashOperation(Integer amount, String toProductId) {
-        Product toProduct = getProduct(toProductId);
+        IProduct toProduct = getProduct(toProductId);
         new BankingOperation().incomingCashOperation(amount, (Cashable) toProduct);
     }
 
     public void outcomingCashOperation(Integer amount, String fromProductId) throws RuntimeException {
-        Product fromProduct = getProduct(fromProductId);
+        IProduct fromProduct = getProduct(fromProductId);
         new BankingOperation().outcomingCashOperation(amount, (Cashable) fromProduct);
     }
 
     private boolean removeProduct(String productId) {
-        for (Product product : products) {
-            Product prodToDel;
-            if (product.id == productId) {
+        for (IProduct product : products) {
+            IProduct prodToDel;
+            if (product.getId() == productId) {
                 prodToDel = product;
                 products.remove(prodToDel);
                 return true;

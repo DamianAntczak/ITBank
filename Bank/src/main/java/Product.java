@@ -3,7 +3,7 @@ import java.util.Date;
 /**
  * Created by student on 10.03.2017.
  */
-public abstract class Product {
+public abstract class Product implements IProduct {
 
     protected double debit;
     protected String ownerId;
@@ -21,15 +21,18 @@ public abstract class Product {
     }
 
 
+    @Override
     public String getId(){
         return this.id;
     }
+    @Override
     public double getBalance(){
         return this.balance;
     }
 
     abstract double close(int numberOfMonths) throws RuntimeException;
 
+    @Override
     public Date getCreatedAt(){
         return this.createdAt;
     }

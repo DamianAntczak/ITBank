@@ -4,7 +4,7 @@
 public class KIRMediator implements Mediator {
 
     @Override
-    public void transferOperation(Integer amount, Product from, Product to) throws RuntimeException {
+    public void transferOperation(Integer amount, IProduct from, IProduct to) throws RuntimeException {
         new BankingOperation().transferOperation(amount, (Cashable) from, (Cashable) to);
     }
 }

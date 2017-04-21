@@ -54,12 +54,5 @@ public class BankAccountTest {
         assertEquals(0.0, fixture.getBalance(), 0.1);
         assertEquals(200.0, cash, 0.1);
     }
-
-    @Test
-    public void setDebit() throws Exception {
-        fixture.setDebit(200);
-        assumeTrue(fixture.getBalance() == 0);
-        double cash = fixture.getCash(100);
-        assumeTrue(fixture.getBalance() == -100);
-    }
+    
 }

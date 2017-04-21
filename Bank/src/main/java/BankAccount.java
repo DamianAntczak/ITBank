@@ -3,10 +3,16 @@ import java.util.Date;
 /**
  * Created by student on 10.03.2017.
  */
-public class BankAccount extends Product implements Debit, Cashable{
+public class BankAccount  implements  IProduct, Cashable{
+
+    protected String ownerId;
+    protected double balance;
+    protected String id;
+    protected Date createdAt;
+    protected String name;
 
     public BankAccount(String ownerId){
-        super(ownerId,"Konto osobiste");
+        this.ownerId = ownerId;
         this.balance = 0;
         this.createdAt = new Date();
     }
@@ -16,16 +22,15 @@ public class BankAccount extends Product implements Debit, Cashable{
     }
 
     public double getCash(double amount) throws RuntimeException {
-        if(this.balance + this.debit >= amount){
+        if(this.balance >= amount) {
             this.balance -= amount;
             return amount;
         }
-        else{
-            throw new RuntimeException("Cannot get cash from bank account.");
+        else {
+            throw new RuntimeException("Cannot get more cash than account balance");
         }
     }
 
-    @Override
     //Close the account
     double close(int numberOfMonths) throws RuntimeException{
         if (this.balance >= 0) {
@@ -38,7 +43,17 @@ public class BankAccount extends Product implements Debit, Cashable{
     }
 
     @Override
-    public void setDebit(double amount) {
-        this.debit = amount;
+    public String getId() {
+        return this.getId();
+    }
+
+    @Override
+    public double getBalance() {
+        return this.balance;
+    }
+
+    @Override
+    public Date getCreatedAt() {
+        return null;
     }
 }
