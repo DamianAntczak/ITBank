@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * Created by marcinkarmelita on 31/03/17.
  */
@@ -36,6 +38,12 @@ public class NumberFactory {
             idx -= 4;
         }
         return swift + str;
+    }
+
+    public String createNumberForBank(String bankCode) {
+        Random generator = new Random();
+        StringBuilder str = new StringBuilder(String.format("%s%d", bankCode, generator.nextInt(9000)+1000));
+        return str.toString();
     }
 
     public String createNumberForBankingOperation() {

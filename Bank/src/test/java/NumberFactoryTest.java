@@ -5,7 +5,16 @@ import org.junit.Test;
  * Created by marcinkarmelita on 31/03/17.
  */
 public class NumberFactoryTest {
+
     NumberFactory fixture;
+
+    @Test
+    public void createNumberForBank() throws Exception {
+        String bankNumber1 = fixture.getInstance().createNumberForBank("TTC");
+        String bankNumber2 = fixture.getInstance().createNumberForBank("TTC");
+
+        Assert.assertNotNull(bankNumber1, bankNumber2);
+    }
 
     @Test
     public void testClientNumberInc() throws Exception {

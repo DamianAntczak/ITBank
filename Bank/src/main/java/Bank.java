@@ -11,8 +11,13 @@ import java.util.stream.Collectors;
  */
 public class Bank {
     private List<Product> products = new ArrayList<Product>();
+    private String number = NumberFactory.getInstance().createNumberForBank("TTO");
 
     public Bank() {
+    }
+
+    public String getNumber() {
+        return number;
     }
 
     public Client createClient(String name, String surname, String address) {
