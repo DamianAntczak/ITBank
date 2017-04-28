@@ -3,13 +3,12 @@ import java.util.Date;
 /**
  * Created by student on 10.03.2017.
  */
-public class BankAccount  implements  IProduct {
+public class BankAccount  implements  IProduct{
 
     protected String ownerId;
     protected double balance;
     protected String id;
     protected Date createdAt;
-    protected String name;
 
     public BankAccount(String ownerId){
         this.ownerId = ownerId;
@@ -32,7 +31,7 @@ public class BankAccount  implements  IProduct {
     }
 
     //Close the account
-    double close(int numberOfMonths) throws RuntimeException{
+    public  double close(int numberOfMonths) throws RuntimeException{
         if (this.balance >= 0) {
             double balance = this.balance;
             this.balance = 0;
@@ -44,7 +43,7 @@ public class BankAccount  implements  IProduct {
 
     @Override
     public String getId() {
-        return id;
+        return this.id;
     }
 
     @Override
@@ -56,5 +55,4 @@ public class BankAccount  implements  IProduct {
     public Date getCreatedAt() {
         return null;
     }
-
 }

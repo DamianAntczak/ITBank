@@ -1,17 +1,38 @@
+import java.util.Date;
+
 /**
  * Created by krzysztof on 16/03/2017.
  */
-public class Credit extends Product {
+public class Credit implements IProduct {
     private Interest interest;
+    protected String ownerId;
+    protected double balance;
+    protected double debit;
+    protected String id;
+    protected Date createdAt;
 
     public Credit(String ownerId, Interest interest, double amount){
-        super(ownerId,"Credit");
         this.interest = interest;
         addCash(amount);
     }
 
     private double calculate(int numberOfMonths){
         return  this.balance - this.interest.interestCalculation(numberOfMonths, balance);
+    }
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public double getBalance() {
+        return balance;
+    }
+
+    @Override
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
     public void addCash(double amount) {
@@ -28,8 +49,7 @@ public class Credit extends Product {
         }
     }
 
-    @Override
-    double close(int numberOfMonths) throws RuntimeException {
+    public double close(int numberOfMonths) throws RuntimeException {
         if (this.balance >= 0) {
             return this.calculate(numberOfMonths);
         } else {

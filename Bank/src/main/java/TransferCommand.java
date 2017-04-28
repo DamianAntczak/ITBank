@@ -10,7 +10,7 @@ public class TransferCommand implements Command {
     private OutcomingCashCommand outcomingCashCommand;
     private boolean internal;
 
-    public TransferCommand(Product from, Product to, Double amount) {
+    public TransferCommand(IProduct from, IProduct to, Double amount) {
         incomingCashCommand = new IncomingCashCommand(amount, to);
         outcomingCashCommand = new OutcomingCashCommand(amount, from);
         // TODO (MK): Check if the transfer is internal
