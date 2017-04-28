@@ -5,7 +5,6 @@ import java.util.Date;
  */
 
 public class TransferCommand implements Command {
-    private boolean executed = false;
     private IncomingCashCommand incomingCashCommand;
     private OutcomingCashCommand outcomingCashCommand;
     private boolean internal;
@@ -24,16 +23,11 @@ public class TransferCommand implements Command {
 
     @Override
     public void execute() throws RuntimeException {
-        if (executed) {
-            throw new RuntimeException("Transfer command was already executed.");
-        }
         try {
             outcomingCashCommand.execute();
             incomingCashCommand.execute();
         } catch (Exception e) {
             throw e;
         }
-
-        executed = true;
     }
 }

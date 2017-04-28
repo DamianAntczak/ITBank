@@ -8,6 +8,7 @@ public class IncomingCashCommand extends CashCommand {
 
     @Override
     public void execute() throws RuntimeException {
+        super.execute();
         operation.getProduct().addCash(operation.getAmount());
     }
 }
