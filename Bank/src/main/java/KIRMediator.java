@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by marcinkarmelita on 21/04/17.
  */
 public class KIRMediator implements Mediator {
+    private List<Command> commands;
 
-    @Override
-    public void transferOperation(Integer amount, IProduct from, IProduct to) throws RuntimeException {
-        new BankingOperation().transferOperation(amount, (Cashable) from, (Cashable) to);
+    public KIRMediator() {
+        commands = new ArrayList<Command>();
     }
 }

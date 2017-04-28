@@ -1,12 +1,12 @@
 import java.util.Date;
 
 public class RecordForTransfer extends Record {
-    private Integer amount;
+    private Double amount;
     private String fromProductNo;
     private String toProductNo;
 
 
-    public RecordForTransfer(String id, Date date, BankingOperation.BankingOperationType type, Double actualBalance, Integer amount, String fromProductNo, String toProductNo) {
+    public RecordForTransfer(String id, Date date, BankingOperation.BankingOperationType type, Double actualBalance, Double amount, String fromProductNo, String toProductNo) {
         super(id, date, type, actualBalance);
         this.amount = amount;
         this.fromProductNo = fromProductNo;
@@ -19,11 +19,6 @@ public class RecordForTransfer extends Record {
 
     public String getToProductNo() {
         return toProductNo;
-    }
-
-    @Override
-    public void print() {
-        System.out.println(this.toString());
     }
 
     @Override

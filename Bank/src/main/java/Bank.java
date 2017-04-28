@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.EnumSet;
 import java.util.List;
 
 import java.util.function.Predicate;
@@ -11,11 +10,12 @@ import java.util.stream.Collectors;
  */
 public class Bank {
     private List<IProduct> products = new ArrayList<IProduct>();
-    private Mediator mediator;
+    private CommandHandler commandHandler;
+
     private String number = NumberFactory.getInstance().createNumberForBank("TTO");
 
     public Bank() {
-
+        commandHandler = new CommandHandler();
     }
 
     public String getNumber() {
@@ -38,21 +38,26 @@ public class Bank {
         return obj;
     }
 
-    public void transferOperation(Integer amount, String fromProductId, String toProductId) throws RuntimeException {
-        IProduct fromProduct = getProduct(fromProductId);
-        IProduct toProduct = getProduct(toProductId);
-        mediator.transferOperation(amount, fromProduct, toProduct);
+    public void doOperation(Command command) {
+        commandHandler.handleCommand(command);
     }
 
-    public void incomingCashOperation(Integer amount, String toProductId) {
-        IProduct toProduct = getProduct(toProductId);
-        new BankingOperation().incomingCashOperation(amount, (Cashable) toProduct);
-    }
 
-    public void outcomingCashOperation(Integer amount, String fromProductId) throws RuntimeException {
-        IProduct fromProduct = getProduct(fromProductId);
-        new BankingOperation().outcomingCashOperation(amount, (Cashable) fromProduct);
-    }
+//    public void transferOperation(Double amount, String fromProductId, String toProductId) throws RuntimeException {
+//        Product fromProduct = getProduct(fromProductId);
+//        Product toProduct = getProduct(toProductId);
+//        mediator.queueTransferOperation(bankingOperation.transferOperation(amount, fromProduct, toProduct));
+//    }
+
+//    public void incomingCashOperation(Double amount, String toProductId) {
+//        Product toProduct = getProduct(toProductId);
+//        new BankingOperation().incomingCashOperation(amount, (Cashable) toProduct);
+//    }
+
+//    public void outcomingCashOperation(Double amount, String fromProductId) throws RuntimeException {
+//        Product fromProduct = getProduct(fromProductId);
+//        new BankingOperation().outcomingCashOperation(amount, (Cashable) fromProduct);
+//    }
 
     private boolean removeProduct(String productId) {
         for (IProduct product : products) {
@@ -122,4 +127,5 @@ public class Bank {
 
         return new Report(records);
     }
+
 }

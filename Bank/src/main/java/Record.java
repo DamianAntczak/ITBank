@@ -3,7 +3,7 @@ import java.util.Date;
 /**
  * Created by marcinkarmelita on 16/03/17.
  */
-public abstract class Record implements Printable {
+public abstract class Record {
     String id;
     Date date;
     BankingOperation.BankingOperationType type;
@@ -27,5 +27,4 @@ public abstract class Record implements Printable {
     public BankingOperation.BankingOperationType getType() {
         return type;
     }
-
 }

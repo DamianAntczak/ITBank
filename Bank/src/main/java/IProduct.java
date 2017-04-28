@@ -12,4 +12,7 @@ public interface IProduct {
 
     @Override
     String toString();
+
+    void addCash(double amount);
+    double getCash(double amount) throws RuntimeException;
 }
