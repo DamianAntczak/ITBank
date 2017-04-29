@@ -1,12 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
+import Interest.*;
+import Product.BankAccount;
 
 /**
  * Created by student on 10.03.2017.
  */
 public class Main {
-    public static void main(String [] args){
-        /*BankAccount  firstAccount = new BankAccount("12345");
+    public static void main(String[] args) {
+        /*Product.BankAccount  firstAccount = new Product.BankAccount("12345");
         System.out.println(firstAccount.getNumber());
         firstAccount.addCash(200);
         System.out.println(firstAccount.getBalance());
@@ -14,8 +14,8 @@ public class Main {
         System.out.println(firstAccount.getBalance());
         System.out.println(firstAccount.getCreatedAt());*/
 
-        BankAccount ba = new BankAccount("1234");
-        ba.balance = 20000;
+//        BankAccount ba = new BankAccount("1234");
+//        ba. = 20000;
 
         testOdsetek();
 //        testLokaty();
@@ -23,14 +23,14 @@ public class Main {
 //        testReports();
     }
 
-    public static  void testBanku() {
-//        Bank bank = new Bank();
-//        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
-//        client1.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
-//        client1.addProduct(bank.addProductForClient(new Credit(client1.getId(), new Interest(InterestFrequency.halfYearly, 4), 4000)));
+    public static void testBanku() {
+//        Bank.Bank bank = new Bank.Bank();
+//        Client.Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
+//        client1.addProduct(bank.addProductForClient(new Product.BankAccount(client1.getId())));
+//        client1.addProduct(bank.addProductForClient(new Product.Credit(client1.getId(), new Interest.Interest(Interest.InterestFrequency.halfYearly, 4), 4000)));
 //
-//        Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
-//        client2.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
+//        Client.Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
+//        client2.addProduct(bank.addProductForClient(new Product.BankAccount(client1.getId())));
 //
 //        client1.print();
 
@@ -38,31 +38,31 @@ public class Main {
         //testLokaty();
     }
 
-    public static void testOdsetek(){
+    public static void testOdsetek() {
         Interest interest = new InterestExample(InterestFrequency.halfYearly);
         System.out.println(interest.interestCalculation(12, 100000));
         System.out.println();
     }
 
 //    public static void testLokaty(){
-//        Bank bank = new Bank();
-//        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
-//        client1.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
+//        Bank.Bank bank = new Bank.Bank();
+//        Client.Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
+//        client1.addProduct(bank.addProductForClient(new Product.BankAccount(client1.getId())));
 //        client1.print();
-//        Deposit deposit = new Deposit(client1.getId(), new Interest(InterestFrequency.yearly,4),5000);
+//        Product.Deposit deposit = new Product.Deposit(client1.getId(), new Interest.Interest(Interest.InterestFrequency.yearly,4),5000);
 //        System.out.println(deposit);
 //        System.out.println(deposit.close(12));
 //
 //    }
 //
 //    public static  void testHistory() {
-//        Bank bank = new Bank();
-//        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
-//        client1.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
-//        client1.addProduct(bank.addProductForClient(new Credit(client1.getId(), new Interest(InterestFrequency.halfYearly, 4), 4000)));
+//        Bank.Bank bank = new Bank.Bank();
+//        Client.Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
+//        client1.addProduct(bank.addProductForClient(new Product.BankAccount(client1.getId())));
+//        client1.addProduct(bank.addProductForClient(new Product.Credit(client1.getId(), new Interest.Interest(Interest.InterestFrequency.halfYearly, 4), 4000)));
 //
-//        Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
-//        client2.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
+//        Client.Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
+//        client2.addProduct(bank.addProductForClient(new Product.BankAccount(client1.getId())));
 //
 //        client1.print();
 //
@@ -73,13 +73,13 @@ public class Main {
 //    }
 //
 //    public static void testReports() {
-//        Bank bank = new Bank();
-//        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
-//        client1.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
-//        client1.addProduct(bank.addProductForClient(new Credit(client1.getId(), new Interest(InterestFrequency.halfYearly, 4), 4000)));
+//        Bank.Bank bank = new Bank.Bank();
+//        Client.Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
+//        client1.addProduct(bank.addProductForClient(new Product.BankAccount(client1.getId())));
+//        client1.addProduct(bank.addProductForClient(new Product.Credit(client1.getId(), new Interest.Interest(Interest.InterestFrequency.halfYearly, 4), 4000)));
 //
-//        Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
-//        client2.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
+//        Client.Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
+//        client2.addProduct(bank.addProductForClient(new Product.BankAccount(client1.getId())));
 //
 //        client1.print();
 //
@@ -95,9 +95,9 @@ public class Main {
 //        bank.removeProduct(client1, client1.getProductId(0));
 //        bank.removeProduct(client2, client2.getProductId(0));
 //
-//        List<BankingOperation.BankingOperationType> types = new ArrayList<>();
-//        types.add(BankingOperation.BankingOperationType.transfer);
-//        types.add(BankingOperation.BankingOperationType.incoming_cash);
+//        List<Operation.BankingOperation.BankingOperationType> types = new ArrayList<>();
+//        types.add(Operation.BankingOperation.BankingOperationType.transfer);
+//        types.add(Operation.BankingOperation.BankingOperationType.incoming_cash);
 //
 //
 //        client1.requestReport(bank.createReportFor(testProductId, types, null, null));

@@ -43,7 +43,23 @@
             <artifactId>easymock</artifactId>
             <version>3.4</version>
         </dependency>
-
+        <dependency>
+            <groupId>groupId</groupId>
+            <artifactId>Bank</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>groupId</groupId>
+            <artifactId>Bank</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>groupId</groupId>
+            <artifactId>Bank</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
 
     </dependencies>
