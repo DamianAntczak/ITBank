@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by marcinkarmelita on 21/04/17.
  */
 
-public class Operation implements Cloneable, IOperation {
+public class Operation implements IOperation {
     private Double amount;
     private IProduct product;
     private String id;
@@ -62,8 +62,4 @@ public class Operation implements Cloneable, IOperation {
         this.date = date;
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 }

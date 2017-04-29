@@ -46,8 +46,18 @@ public class Bank implements Findable<IProduct> {
                 .orElseGet(null);
     }
 
+    public List<BankingOperationCommand> getTransactions() {
+        return commandHandler.getExternalCommands();
+    }
+
     public void doOperation(BankingOperationCommand command) {
         commandHandler.handle(command);
+    }
+
+    public void doOperations(List<BankingOperationCommand> commands) {
+        commands.stream().forEach(command ->
+                commandHandler.handle(command)
+        );
     }
 
     private boolean removeProduct(String productId) {
