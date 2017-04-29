@@ -1,4 +1,5 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runners.Parameterized;
@@ -46,7 +47,6 @@ public class BankAccountTest {
         fixture.addCash(200);
         assumeTrue(fixture.getBalance() == 200);
         fixture.getCash(200);
-
     }
 
     @Test

@@ -5,14 +5,9 @@ import java.util.Date;
  */
 public interface IProduct {
     String getId();
-
     double getBalance();
-
     Date getCreatedAt();
-
-    @Override
-    String toString();
-
     void addCash(double amount);
     double getCash(double amount) throws RuntimeException;
+    double close(int numberOfMonths) throws RuntimeException;
 }
