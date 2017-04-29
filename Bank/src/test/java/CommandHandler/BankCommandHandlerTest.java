@@ -1,6 +1,6 @@
 package CommandHandler;
 
-import Command.Command;
+import Command.BankingOperationCommand;
 import Command.TransferCommand;
 import CommandHandler.BankCommandHandler;
 import Product.BankAccount;
@@ -23,7 +23,7 @@ public class BankCommandHandlerTest {
     private IProduct to;
 
     private BankCommandHandler fixture;
-    private Command command;
+    private Command.BankingOperationCommand command;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {

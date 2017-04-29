@@ -22,6 +22,11 @@ public class OutcomingCashCommandTest {
     }
 
     @Test
+    public void internal() throws Exception {
+        Assert.assertTrue(fixture.isInternal());
+    }
+
+    @Test
     public void executeOK() throws Exception {
         product.addCash(200);
         Assert.assertEquals(product.getBalance(), 200.0, delta);

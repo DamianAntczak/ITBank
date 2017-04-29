@@ -36,7 +36,7 @@ public class Report {
             SimpleDateFormat format2 = new SimpleDateFormat("yyyy MM dd HH:mm");
 
             final String formatedDate = format1.format(new Date());
-            String fileName = fileName = "./raport_" + type.name() + "_" + formatedDate + ".txt";
+            String fileName = "./raport_" + type.name() + "_" + formatedDate + ".txt";
 
             File raportFile = new File(fileName);
 

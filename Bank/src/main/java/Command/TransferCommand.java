@@ -6,7 +6,7 @@ import Product.IProduct;
  * Created by marcinkarmelita on 21/04/17.
  */
 
-public class TransferCommand implements Command {
+public class TransferCommand implements BankingOperationCommand {
     private IncomingCashCommand incomingCashCommand;
     private OutcomingCashCommand outcomingCashCommand;
     private boolean internal;

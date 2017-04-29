@@ -5,6 +5,4 @@ package Command;
  */
 public interface Command {
     void execute() throws RuntimeException;
-
-    boolean isInternal();
 }

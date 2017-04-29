@@ -1,6 +1,6 @@
 package Bank;
 
-import Command.Command;
+import Command.*;
 import CommandHandler.BankCommandHandler;
 import Operation.BankingOperation;
 import Product.IProduct;
@@ -46,13 +46,13 @@ public class Bank implements Findable<IProduct> {
                 .orElseGet(null);
     }
 
-    public void doOperation(Command command) {
+    public void doOperation(BankingOperationCommand command) {
         commandHandler.handle(command);
     }
 
     private boolean removeProduct(String productId) {
 
-        Optional<IProduct> optional = findFirst(products, product -> product.getId() == productId);
+        Optional<IProduct> optional = findFirst(products, product -> Objects.equals(product.getId(), productId));
         return optional.map(p -> products.remove(p)).orElse(false);
     }
 

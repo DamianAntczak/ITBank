@@ -8,7 +8,7 @@ import Operation.Operation;
  */
 
 
-abstract public class CashCommand implements Command {
+abstract public class CashCommand implements BankingOperationCommand {
     protected Operation operation;
     protected boolean executed;
 

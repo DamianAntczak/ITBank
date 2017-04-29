@@ -3,6 +3,6 @@ package Command;
 /**
  * Created by marcinkarmelita on 21/04/17.
  */
-public class BankingOperationCommand {
-
+public interface BankingOperationCommand extends Command {
+    boolean isInternal();
 }

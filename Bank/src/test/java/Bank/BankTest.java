@@ -1,6 +1,5 @@
 package Bank;
 
-import Bank.Bank;
 import Client.Client;
 import Product.BankAccount;
 import org.junit.After;

@@ -1,9 +1,9 @@
 package Command;
 
-import Command.IncomingCashCommand;
 import Product.BankAccount;
 import Product.IProduct;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,6 +21,11 @@ public class IncomingCashCommandTest {
     public void setUp() throws Exception {
         product = new BankAccount("");
         fixture = new IncomingCashCommand(200.0, product);
+    }
+
+    @Test
+    public void internal() throws Exception {
+        Assert.assertTrue(fixture.isInternal());
     }
 
     @Test
