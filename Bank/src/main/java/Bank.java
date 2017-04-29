@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -8,7 +6,7 @@ import java.util.stream.Collectors;
 /**
  * Created by student on 10.03.2017.
  */
-public class Bank {
+public class Bank implements Findable<IProduct> {
     private List<IProduct> products = new ArrayList<IProduct>();
     private BankCommandHandler commandHandler;
 
@@ -33,42 +31,18 @@ public class Bank {
     }
 
     private IProduct getProduct(String productId) {
-        Predicate<IProduct> predicate = c -> c.getId().equals(productId);
-        IProduct obj = products.stream().filter(predicate).findFirst().get();
-        return obj;
+        return findFirst(products, c -> c.getId().equals(productId))
+                .orElseGet(null);
     }
 
     public void doOperation(Command command) {
         commandHandler.handle(command);
     }
 
-
-//    public void transferOperation(Double amount, String fromProductId, String toProductId) throws RuntimeException {
-//        Product fromProduct = getProduct(fromProductId);
-//        Product toProduct = getProduct(toProductId);
-//        mediator.queueTransferOperation(bankingOperation.transferOperation(amount, fromProduct, toProduct));
-//    }
-
-//    public void incomingCashOperation(Double amount, String toProductId) {
-//        Product toProduct = getProduct(toProductId);
-//        new BankingOperation().incomingCashOperation(amount, (Cashable) toProduct);
-//    }
-
-//    public void outcomingCashOperation(Double amount, String fromProductId) throws RuntimeException {
-//        Product fromProduct = getProduct(fromProductId);
-//        new BankingOperation().outcomingCashOperation(amount, (Cashable) fromProduct);
-//    }
-
     private boolean removeProduct(String productId) {
-        for (IProduct product : products) {
-            IProduct prodToDel;
-            if (product.getId() == productId) {
-                prodToDel = product;
-                products.remove(prodToDel);
-                return true;
-            }
-        }
-        return false;
+
+        Optional<IProduct> optional = findFirst(products, product -> product.getId() == productId);
+        return optional.map(p -> products.remove(p)).orElse(false);
     }
 
     public void removeProduct(Client client, String productId) {
@@ -77,10 +51,10 @@ public class Bank {
             new BankingOperation().removingOperation(productId, true);
             return;
         }
-        new BankingOperation().removingOperation(productId, true);
+        new BankingOperation().removingOperation(productId, false);
     }
 
-
+    // TODO: 29/04/17 (MK): Needs to be refactored.
     public Report createReportFor(String productId, List<BankingOperation.BankingOperationType> operationTypes, Date startDate, Date endDate) {
 
         List<Record> records = new ArrayList<>();
@@ -128,4 +102,18 @@ public class Bank {
         return new Report(records);
     }
 
+    @Override
+    public Optional<IProduct> findFirst(Collection<IProduct> collection, Predicate<IProduct> predicate) {
+        return collection.stream().filter(predicate).findFirst();
+    }
+
+    @Override
+    public Collection<IProduct> findAny(Collection<IProduct> collection, Predicate<IProduct> predicate) {
+        return collection.stream().filter(predicate).collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean contains(Collection<IProduct> collection, Predicate<IProduct> predicate) {
+        return collection.stream().anyMatch(predicate);
+    }
 }
