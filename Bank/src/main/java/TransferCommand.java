@@ -26,7 +26,7 @@ public class TransferCommand implements Command {
         try {
             outcomingCashCommand.execute();
             incomingCashCommand.execute();
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             throw e;
         }
     }

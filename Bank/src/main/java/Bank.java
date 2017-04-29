@@ -10,12 +10,12 @@ import java.util.stream.Collectors;
  */
 public class Bank {
     private List<IProduct> products = new ArrayList<IProduct>();
-    private CommandHandler commandHandler;
+    private BankCommandHandler commandHandler;
 
     private String number = NumberFactory.getInstance().createNumberForBank("TTO");
 
     public Bank() {
-        commandHandler = new CommandHandler();
+        commandHandler = new BankCommandHandler();
     }
 
     public String getNumber() {
@@ -39,7 +39,7 @@ public class Bank {
     }
 
     public void doOperation(Command command) {
-        commandHandler.handleCommand(command);
+        commandHandler.handle(command);
     }
 
 
