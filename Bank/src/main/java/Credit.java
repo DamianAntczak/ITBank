@@ -37,4 +37,20 @@ public class Credit extends Product {
         }
 
     }
+
+    @Override
+    public IProduct accept(AllReports reports) {
+        return reports.visit(this);
+    }
+
+    @Override
+    public IProduct accept(ReportOver reports) {
+        return reports.visit(this);
+    }
+
+//    @Override
+//    public Product accept(AllReports reports) {
+//        return reports.visit(this);
+//    }
+
 }

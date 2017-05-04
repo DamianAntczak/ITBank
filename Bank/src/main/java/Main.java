@@ -14,28 +14,34 @@ public class Main {
         System.out.println(firstAccount.getBalance());
         System.out.println(firstAccount.getCreatedAt());*/
 
-        BankAccount ba = new BankAccount("1234");
-        ba.balance = 20000;
+        testBanku();
 
-        testOdsetek();
+//        BankAccount ba = new BankAccount("1234");
+//        ba.balance = 20000;
+
+        //testOdsetek();
 //        testLokaty();
 //        testHistory();
 //        testReports();
     }
 
     public static  void testBanku() {
-//        Bank bank = new Bank();
-//        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
-//        client1.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
-//        client1.addProduct(bank.addProductForClient(new Credit(client1.getId(), new Interest(InterestFrequency.halfYearly, 4), 4000)));
-//
-//        Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
-//        client2.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
-//
-//        client1.print();
+        Bank bank = new Bank();
+        Client client1 = bank.createClient("Krzysztof", "Rozga", "Piotrowo");
 
-        testOdsetek();
-        //testLokaty();
+        client1.addProduct(bank.addProductForClient(new BankAccount(client1.getId())));
+        Deposit deposit = new Deposit(client1.getId(),new InterestExample(InterestFrequency.yearly),5000);
+        client1.addProduct(bank.addProductForClient(deposit));
+
+        Client client2 = bank.createClient("Jan", "Kowalski", "Piotrowo");
+        client2.addProduct(bank.addProductForClient(new Credit(client2.getId(), new InterestExample(InterestFrequency.yearly), 1000)));
+
+
+        bank.doAllProductsReport(new AllReports());
+        bank.doReportForOver(new ReportOver(4000));
+
+//        testOdsetek();
+//        testLokaty();
     }
 
     public static void testOdsetek(){

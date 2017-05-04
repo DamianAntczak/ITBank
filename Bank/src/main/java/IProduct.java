@@ -3,7 +3,7 @@ import java.util.Date;
 /**
  * Created by Damian on 21.04.2017.
  */
-public interface IProduct {
+public interface IProduct extends Visitable {
     String getId();
 
     double getBalance();
@@ -14,5 +14,8 @@ public interface IProduct {
     String toString();
 
     void addCash(double amount);
+
     double getCash(double amount) throws RuntimeException;
+
+    //public IProduct accept(AllReports reports);
 }

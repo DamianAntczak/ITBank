@@ -3,7 +3,7 @@ import java.util.Date;
 /**
  * Created by student on 10.03.2017.
  */
-public abstract class Product implements IProduct {
+public abstract class Product implements IProduct{
 
     protected double debit;
     protected String ownerId;

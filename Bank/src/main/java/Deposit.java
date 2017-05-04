@@ -36,4 +36,21 @@ public class Deposit extends Product {
     public double getCash(double amount) throws RuntimeException {
         throw new RuntimeException("Not allowed");
     }
+
+    @Override
+    public IProduct accept(AllReports reports) {
+        return reports.visit(this);
+    }
+
+    @Override
+    public IProduct accept(ReportOver reports) {
+        return reports.visit(this);
+    }
+
+//    @Override
+//    public Product accept(AllReports reports) {
+//        return reports.visit(this);
+//    }
+
+
 }

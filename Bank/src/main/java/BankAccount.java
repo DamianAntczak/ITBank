@@ -57,4 +57,24 @@ public class BankAccount  implements  IProduct {
         return null;
     }
 
+    @Override
+    public String toString() {
+        String string = "PRODUCT:" + System.lineSeparator();
+        string += "ID: " + this.id + System.lineSeparator();
+        string += "Created at: " + this.createdAt.toString() + System.lineSeparator();
+        //string += "Type: " + this.ProductType.toString() + System.lineSeparator();
+        string += "Owner id: " + this.ownerId + System.lineSeparator();
+        return string;
+    }
+
+
+    @Override
+    public IProduct accept(AllReports reports) {
+        return reports.visit(this);
+    }
+
+    @Override
+    public IProduct accept(ReportOver reports) {
+        return reports.visit(this);
+    }
 }

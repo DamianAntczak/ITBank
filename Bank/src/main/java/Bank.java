@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -59,6 +60,7 @@ public class Bank {
 //        new BankingOperation().outcomingCashOperation(amount, (Cashable) fromProduct);
 //    }
 
+
     private boolean removeProduct(String productId) {
         for (IProduct product : products) {
             IProduct prodToDel;
@@ -78,6 +80,41 @@ public class Bank {
             return;
         }
         new BankingOperation().removingOperation(productId, true);
+    }
+
+
+    public void doAllProductsReport(AllReports reports) {
+        List<IProduct> reportedProducts = new ArrayList<>();
+
+        for (IProduct product : products) {
+            reportedProducts.add(product.accept(reports));
+        }
+
+        System.out.println("=======================");
+        System.out.println("# of reported accounts = " + reportedProducts.size());
+        System.out.println("=======================");
+        for (IProduct product : reportedProducts) {
+            System.out.println(product);
+        }
+        System.out.println("=======================");
+    }
+
+    public void doReportForOver(ReportOver reports) {
+        List<IProduct> reportedProducts = new ArrayList<>();
+
+        for (IProduct product : products) {
+            reportedProducts.add(product.accept(reports));
+        }
+
+        reportedProducts.removeAll(Collections.singleton(null));    //USUWANIE NULL'i
+
+        System.out.println("=======================");
+        System.out.println("# of reported accounts = " + reportedProducts.size());
+        System.out.println("=======================");
+        for (IProduct product : reportedProducts) {
+            System.out.println(product);
+        }
+        System.out.println("=======================");
     }
 
 
